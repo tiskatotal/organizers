@@ -1,0 +1,14 @@
+{
+    "name": "tiskatotal",
+    "description": "Donut news",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Jim Fisher",
+            "email": "jameshfisher@gmail.com"
+        }
+    ],
+    "require": {
+        "monolog/monolog": "^1.23"
+    }
+}

@@ -1,5 +1,5 @@
 {
-    "name": "tiskatotal/organizers",
+    "name": "tiskatotal",
     "description": "organizers",
     "type": "project",
     "authors": [
@@ -9,6 +9,6 @@
         }
     ],
     "require": {
-        "monolog/monolog": "^1.25"
+        "monolog/monolog": "^1.23"
     }
 }
