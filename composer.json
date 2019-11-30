@@ -9,6 +9,7 @@
         }
     ],
     "require": {
-        "monolog/monolog": "^1.25"
+        "monolog/monolog": "^1.25",
+        "mpdf/mpdf": "^8.04"
     }
 }
