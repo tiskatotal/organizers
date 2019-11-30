@@ -10,6 +10,6 @@
     ],
     "require": {
         "monolog/monolog": "^1.25",
-        "mpdf/mpdf": "^8.04"
+        "mpdf/mpdf": "^8.0"
     }
 }
