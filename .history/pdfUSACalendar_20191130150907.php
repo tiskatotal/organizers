@@ -1,7 +1,7 @@
 <?php
 require_once("mpdf.php");
 
-// class PDF_USA_Calendar extends FPDF
+class PDF_USA_Calendar extends FPDF
 {
 protected $date;
 protected $squareHeight;
