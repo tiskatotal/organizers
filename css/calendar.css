@@ -1,0 +1,145 @@
+.calendar-simple {
+  width: 100%;
+  border: 1px solid brown;
+  box-sizing: border-box;
+}
+.calendar-simple-calendar {
+  box-sizing: border-box;
+}
+.calendar-simple-calendar-weekdays {
+  box-sizing: border-box;
+  background: brown;
+  color: white;
+  overflow: auto;
+}
+.calendar-simple-calendar-weekdays > div {
+  height: 5vh;
+  line-height: 5vh;
+  text-align: center;
+  text-transform: capitalize;
+}
+.calendar-simple-calendar-days {
+  box-sizing: border-box;
+  background: white;
+  color: grey;
+  font-size: 23px;
+  overflow: auto;
+}
+.calendar-simple-calendar-days > div {
+  border: 0.5px solid brown;
+  padding: 5px;
+  transition: 250ms linear all;
+}
+.calendar-simple-calendar-days > div:hover {
+  background: #f5d9d9;
+}
+.calendar-simple-calendar-cell {
+  box-sizing: border-box;
+  float: left;
+  width: calc( (100% - 50px ) / 7 );
+  height: 10vh;
+}
+.calendar-simple-calendar-cell-week {
+  width: 50px;
+  font-size: 15px;
+}
+.calendar-simple-calendar-cell-week:hover ~ div:not(.calendar-simple-calendar-cell-week) {
+  background: #e18787;
+}
+.calendar-simple-calendar-cell-week:hover ~ .calendar-simple-calendar-cell-week ~ div {
+  background: none;
+}
+.Calendar {
+  display: table;
+}
+.cTable {
+  display: table;
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  border: 1pt solid black;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.cTableRow {
+  display: table-row;
+}
+.cTableHead {
+  display: table-header-group;
+  background-color: rgba(151, 20, 20, 0.151);
+  width: 100%;
+  padding: 2mm 3mm;
+  border: 1pt solid black;
+  white-space: nowrap;
+}
+.cTableCell {
+  display: table-cell;
+  padding: 5px 15px;
+  border: 1px solid #999999;
+  vertical-align: middle;
+}
+.cTableFoot {
+  display: table-footer-group;
+  font-weight: bold;
+  background-color: #ddd;
+}
+.cTableBody {
+  display: table-row-group;
+}
+.highlight {
+  background: #471675;
+}
+body,
+table,
+td,
+th {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+}
+label {
+  display: block;
+  line-height: 30px;
+  margin: 5px 0;
+}
+label span {
+  display: inline-block;
+  width: 120px;
+}
+input [type="submit"] {
+  margin-left: 120px;
+}
+table {
+  margin: 0;
+  width: 75%;
+  box-sizing: border-box;
+  border: 1pt solid black;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+table th {
+  background: rgba(130, 212, 109, 0.418);
+  height: 80px;
+}
+table th,
+table td {
+  padding: 1mm 3mm;
+  border: 1pt solid black;
+  border-collapse: collapse;
+  white-space: nowrap;
+}
+table th.fit,
+table td.fit {
+  width: 100%;
+}
+table th.header,
+table td.header {
+  width: 60%;
+  border: 1px;
+  background: rgba(231, 225, 219, 0.5);
+}
+table.holidays td {
+  padding: 0.8cm 0;
+}
+table.row {
+  background: orangered;
+}
