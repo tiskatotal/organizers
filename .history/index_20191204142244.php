@@ -34,6 +34,8 @@ $last_day_month = $date->format('t'); //number of days in given  month
 $first_day_month = $date->format('N'); //Starts the month on the right weekday 1 for monday 7 sunday
 $start_month_day = $date->format('D'); // textual representation
 $current_cells = array();
+// $actual_month = date('m');
+// $actual_year = date('Y');
 $years = range(2019, 2030);
 ?>
 
@@ -46,14 +48,22 @@ $years = range(2019, 2030);
 	<link rel="stylesheet" href="css/calendar.css" />
 </head>
 
-<body>	
+<body>
+
+	
 	<table>
 		<thead>
 			<tr>
-				<th colspan="8">
-					<?php print($months[$month] . ' ' . $year); 
-					?>
-				</th>
+				<td>
+					<table>
+						<tr>
+							<th> 
+								<?php print($months[$month] . ' ' . $year); 
+								?>
+							</th>
+						</tr>
+					</table>
+				</td>
 			</tr>
 		</thead>
 		<tbody>
@@ -65,45 +75,55 @@ $years = range(2019, 2030);
 				}
 				?>
 			</tr>
-				<?php
-					$current_week = $date->format('W'); // ISO week numbers in years
-					$current_day = 1;
-					while ($current_day <= $last_day_month) {
-						print '<tr>';
-						print '<th>' . $current_week . '</th>';
-						
-						$painted_cells = 0;
-						// Nos faltan los 7 días L a D
-						if ($current_day == 1) {
-							for ($empty_cell = 1; $empty_cell < $first_day_month; $empty_cell++) {
-								print '<td></td>';
-								$painted_cells++;
-							}
+			
+			<?php
+				$current_week = $date->format('W'); // ISO week numbers in years
+				$current_day = 1;
+				while ($current_day <= $last_day_month) {
+					print '<tr>';
+					print '<th>' . $current_week . '</th>';
+					
+					$painted_cells = 0;
+					// Nos faltan los 7 días L a D
+					if ($current_day == 1) {
+						for ($empty_cell = 1; $empty_cell < $first_day_month; $empty_cell++) {
+							print '<td></td>';
+							$painted_cells++;
+
 						}
-						// paint a cell for every day of the month
-						for ($painted_cells; $painted_cells < 7; $painted_cells++) {
-							if ($current_day <= $last_day_month) {
-								print '<td>' . $current_day . '</td>';
-							} else {
-								print '<td></td>';
-							}
-							$current_day++;
-						}
-						$current_week++;
-						print '</tr>';
 					}
+					// paint a cell for every day of the month
+					for ($painted_cells; $painted_cells < 7; $painted_cells++) {
+						if ($current_day <= $last_day_month) {
+							print '<td>' . $current_day . '</td>';
+							// if ($current_day == $today) {
+							// 	// $today = $current_day;
+							// print '<td style="border: 1px solid red;">';
+							// } 
+							
+						} else {
+							print '<td></td>';
+						}
+						$current_day++;
+					}
+					
+					$current_week++;
+					print '</tr>';
+				}
+
 				?>
+				
 		</tbody>
-		<!-- <tfoot>
+		<tfoot>
 			<tr>
-				<td> 
+				<td> anything you would like
 					<!-- <p>
 						En Torremanzanas a <?php
 						print($last_day_month . ' de ' . $months[$month] . ' de ' . $year); ?>
 					</p> -->
 				</td>
 			</tr>
-		</tfoot> -->
+		</tfoot>
 	</table>	
 </body>
 </div>

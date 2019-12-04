@@ -1,0 +1,33 @@
+.calendar-simple {
+  width: 100%;
+  border: 1px solid brown;
+  box-sizing: border-box;
+}
+.calendar-simple-calendar {
+  box-sizing: border-box;
+}
+.calendar-simple-calendar-weekdays {
+  box-sizing: border-box;
+  background: brown;
+  color: white;
+  overflow: auto;
+}
+.calendar-simple-calendar-weekdays > div {
+  height: 5vh;
+  line-height: 5vh;
+  text-align: center;
+  text-transform: capitalize;
+}
+.calendar-simple-calendar-days {
+  box-sizing: border-box;
+  background: white;
+  color: grey;
+  font-size: 23px;
+  overflow: auto;
+}
+.calendar-simple-calendar-days > div {
+  border: 0.5px solid brown;
+  padding: 5px;
+  transition: 250ms linear all;
+}
+.calendar-simple-calendar-days > div:hover {

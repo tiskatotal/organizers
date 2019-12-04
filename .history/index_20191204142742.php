@@ -50,7 +50,7 @@ $years = range(2019, 2030);
 	<table>
 		<thead>
 			<tr>
-				<th colspan="8">
+				<th>
 					<?php print($months[$month] . ' ' . $year); 
 					?>
 				</th>
@@ -93,17 +93,18 @@ $years = range(2019, 2030);
 						print '</tr>';
 					}
 				?>
+				
 		</tbody>
-		<!-- <tfoot>
+		<tfoot>
 			<tr>
-				<td> 
+				<td> anything you would like
 					<!-- <p>
 						En Torremanzanas a <?php
 						print($last_day_month . ' de ' . $months[$month] . ' de ' . $year); ?>
 					</p> -->
 				</td>
 			</tr>
-		</tfoot> -->
+		</tfoot>
 	</table>	
 </body>
 </div>

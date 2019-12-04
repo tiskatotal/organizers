@@ -50,10 +50,10 @@ $years = range(2019, 2030);
 	<table>
 		<thead>
 			<tr>
-				<th colspan="8">
+				<td>
 					<?php print($months[$month] . ' ' . $year); 
 					?>
-				</th>
+				</td>
 			</tr>
 		</thead>
 		<tbody>

@@ -50,7 +50,7 @@ $years = range(2019, 2030);
 	<table>
 		<thead>
 			<tr>
-				<th colspan="8">
+				<th>
 					<?php print($months[$month] . ' ' . $year); 
 					?>
 				</th>
@@ -78,32 +78,36 @@ $years = range(2019, 2030);
 							for ($empty_cell = 1; $empty_cell < $first_day_month; $empty_cell++) {
 								print '<td></td>';
 								$painted_cells++;
+
 							}
 						}
 						// paint a cell for every day of the month
 						for ($painted_cells; $painted_cells < 7; $painted_cells++) {
 							if ($current_day <= $last_day_month) {
 								print '<td>' . $current_day . '</td>';
+																
 							} else {
 								print '<td></td>';
 							}
 							$current_day++;
 						}
+						
 						$current_week++;
 						print '</tr>';
-					}
+				}
 				?>
+				
 		</tbody>
-		<!-- <tfoot>
+		<tfoot>
 			<tr>
-				<td> 
+				<td> anything you would like
 					<!-- <p>
 						En Torremanzanas a <?php
 						print($last_day_month . ' de ' . $months[$month] . ' de ' . $year); ?>
 					</p> -->
 				</td>
 			</tr>
-		</tfoot> -->
+		</tfoot>
 	</table>	
 </body>
 </div>
