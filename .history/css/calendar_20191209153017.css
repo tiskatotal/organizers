@@ -14,9 +14,11 @@ table {
   border-spacing: 0;
 }
 table tr {
-  background: #b1a1c5;
+  background: #c3e4bb;
 }
-
+table tr:hover {
+  background: brown;
+}
 table th {
   background: rgba(240, 115, 13, 0.699);
   height: 80px;
@@ -38,3 +40,9 @@ table td.header {
   border: 1px;
   background: rgba(231, 225, 219, 0.5);
 }
+/* table td:hover {
+  background: #e7dede;
+}
+table.holidays td {
+  padding: 0.8cm 0;
+} */

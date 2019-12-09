@@ -16,7 +16,9 @@ table {
 table tr {
   background: #b1a1c5;
 }
-
+table tr:hover {
+  background: brown;
+}
 table th {
   background: rgba(240, 115, 13, 0.699);
   height: 80px;
