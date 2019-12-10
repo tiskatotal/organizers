@@ -38,7 +38,7 @@ table td.header {
   border: 1px;
   background: rgba(231, 225, 219, 0.5);
 }
-.myHeader {
+myHeader {
   border-bottom: 1px solid #000000; 
   font-weight: bold; 
    font-size: 10pt;

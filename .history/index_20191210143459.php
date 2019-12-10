@@ -34,6 +34,7 @@ $first_day_month = $date->format('N'); //Starts the month on the right weekday 1
 $start_month_day = $date->format('D'); // textual representation
 $current_cells = array();
 $years = range(2019, 2030);
+
 ?>
 
 <!DOCTYPE html>

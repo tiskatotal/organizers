@@ -1,8 +1,6 @@
 <?php
 // include ('convert.timetracker.php');
 
-use Mpdf\Tag\SetHtmlPageHeader;
-
 ob_start();
 $date = new DateTime();
 // $day = $date->format('N'); // Day of the month, 2 digits with leading zeros 01 to 31    
@@ -34,6 +32,7 @@ $first_day_month = $date->format('N'); //Starts the month on the right weekday 1
 $start_month_day = $date->format('D'); // textual representation
 $current_cells = array();
 $years = range(2019, 2030);
+
 ?>
 
 <!DOCTYPE html>
@@ -93,22 +92,19 @@ $years = range(2019, 2030);
 					}
 				?>
 		</tbody>
-		<tfoot>
+		<!-- <tfoot>
 			<tr>
-				<td colspan="8"> 
-					<p>Special Days <?php
-						print($last_day_month . ' de ' . $months[$month] . ' de ' . $year); ?>						
-					</p>
+				<td> 
+					<!-- <p>
+						En Torremanzanas a <?php
+						print($last_day_month . ' de ' . $months[$month] . ' de ' . $year); ?>
+					</p> -->
 				</td>
 			</tr>
-		</tfoot>
+		</tfoot> -->
 	</table>
-	<!-- <htmlpageheader name="myHeader1">
-    <div style="text-align: right>My document</div>
-</htmlpageheader> -->
-
-<htmlpageheader name="myHeader"> My document </htmlpageheader>
 </body>
+<!-- </div> -->
 </html>
 <?php
 $html = ob_get_clean();

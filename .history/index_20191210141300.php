@@ -1,8 +1,6 @@
 <?php
 // include ('convert.timetracker.php');
 
-use Mpdf\Tag\SetHtmlPageHeader;
-
 ob_start();
 $date = new DateTime();
 // $day = $date->format('N'); // Day of the month, 2 digits with leading zeros 01 to 31    
@@ -43,6 +41,7 @@ $years = range(2019, 2030);
 	<meta charset="UTF-8">
 	<title>TimeTracker</title>
 	<link rel="stylesheet" href="css/timetracker.css" />
+	<in
 </head>
 
 <body>
@@ -93,22 +92,20 @@ $years = range(2019, 2030);
 					}
 				?>
 		</tbody>
-		<tfoot>
+		<!-- <tfoot>
 			<tr>
-				<td colspan="8"> 
-					<p>Special Days <?php
-						print($last_day_month . ' de ' . $months[$month] . ' de ' . $year); ?>						
-					</p>
+				<td> 
+					<!-- <p>
+						En Torremanzanas a <?php
+						print($last_day_month . ' de ' . $months[$month] . ' de ' . $year); ?>
+					</p> -->
 				</td>
 			</tr>
-		</tfoot>
-	</table>
-	<!-- <htmlpageheader name="myHeader1">
-    <div style="text-align: right>My document</div>
-</htmlpageheader> -->
-
-<htmlpageheader name="myHeader"> My document </htmlpageheader>
+		</tfoot> -->
+	</table>	
 </body>
+</div>
+<!-- <pagebreak /> -->
 </html>
 <?php
 $html = ob_get_clean();
@@ -132,7 +129,7 @@ $oh = $mpdf->w;
 $pw = $mpdf->w / 2;
 $ph = $mpdf->h;
 
-// $mpdf->SetDisplayMode('fullpage');
+$mpdf->SetDisplayMode('fullpage');
 
 $mpdf->Output();
 ?>

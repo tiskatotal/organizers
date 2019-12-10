@@ -1,7 +1,4 @@
 <?php
-// include ('convert.timetracker.php');
-
-use Mpdf\Tag\SetHtmlPageHeader;
 
 ob_start();
 $date = new DateTime();
@@ -29,7 +26,7 @@ $months = array(1 => 'January', 2 => 'February', 3 => 'March', 4 => 'April', 5 =
 
 $days_in_month = $date->format('d-m-Y'); // t is number of days in given month 28 through 31
 
-$last_day_month = $date->format('t'); //number of days in given month
+$last_day_month = $date->format('t'); //number of days in given  month
 $first_day_month = $date->format('N'); //Starts the month on the right weekday 1 for monday 7 sunday
 $start_month_day = $date->format('D'); // textual representation
 $current_cells = array();
@@ -45,7 +42,7 @@ $years = range(2019, 2030);
 	<link rel="stylesheet" href="css/timetracker.css" />
 </head>
 
-<body>
+<body>	
 	<table>
 		<thead>
 			<tr>
@@ -93,46 +90,21 @@ $years = range(2019, 2030);
 					}
 				?>
 		</tbody>
-		<tfoot>
+		<!-- <tfoot>
 			<tr>
-				<td colspan="8"> 
-					<p>Special Days <?php
-						print($last_day_month . ' de ' . $months[$month] . ' de ' . $year); ?>						
-					</p>
+				<td> 
+					<!-- <p>
+						En Torremanzanas a <?php
+						print($last_day_month . ' de ' . $months[$month] . ' de ' . $year); ?>
+					</p> -->
 				</td>
 			</tr>
-		</tfoot>
-	</table>
-	<!-- <htmlpageheader name="myHeader1">
-    <div style="text-align: right>My document</div>
-</htmlpageheader> -->
-
-<htmlpageheader name="myHeader"> My document </htmlpageheader>
+		</tfoot> -->
+	</table>	
 </body>
+</div>
 </html>
 <?php
 $html = ob_get_clean();
 ?>
 
-<?php
-require_once __DIR__ . '/vendor/autoload.php';
-
-$mpdf = new \Mpdf\Mpdf([
-    'mode' => 'utf-8',
-    'format' => 'A4-L',
-    'orientation' => 'L'
-]);
-
-// $mpdf->WriteHTML('<h1>Hello world!</h1>');
-$mpdf->WriteHTML($html);
-$mpdf->AddPage();
-
-$ow = $mpdf->h;
-$oh = $mpdf->w;
-$pw = $mpdf->w / 2;
-$ph = $mpdf->h;
-
-// $mpdf->SetDisplayMode('fullpage');
-
-$mpdf->Output();
-?>

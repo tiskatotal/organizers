@@ -1,7 +1,4 @@
 <?php
-// include ('convert.timetracker.php');
-
-use Mpdf\Tag\SetHtmlPageHeader;
 
 ob_start();
 $date = new DateTime();
@@ -29,7 +26,7 @@ $months = array(1 => 'January', 2 => 'February', 3 => 'March', 4 => 'April', 5 =
 
 $days_in_month = $date->format('d-m-Y'); // t is number of days in given month 28 through 31
 
-$last_day_month = $date->format('t'); //number of days in given month
+$last_day_month = $date->format('t'); //number of days in given  month
 $first_day_month = $date->format('N'); //Starts the month on the right weekday 1 for monday 7 sunday
 $start_month_day = $date->format('D'); // textual representation
 $current_cells = array();
@@ -45,7 +42,7 @@ $years = range(2019, 2030);
 	<link rel="stylesheet" href="css/timetracker.css" />
 </head>
 
-<body>
+<body>	
 	<table>
 		<thead>
 			<tr>
@@ -93,46 +90,104 @@ $years = range(2019, 2030);
 					}
 				?>
 		</tbody>
-		<tfoot>
+		<!-- <tfoot>
 			<tr>
-				<td colspan="8"> 
-					<p>Special Days <?php
-						print($last_day_month . ' de ' . $months[$month] . ' de ' . $year); ?>						
-					</p>
+				<td> 
+					<!-- <p>
+						En Torremanzanas a <?php
+						print($last_day_month . ' de ' . $months[$month] . ' de ' . $year); ?>
+					</p> -->
 				</td>
 			</tr>
-		</tfoot>
-	</table>
-	<!-- <htmlpageheader name="myHeader1">
-    <div style="text-align: right>My document</div>
-</htmlpageheader> -->
-
-<htmlpageheader name="myHeader"> My document </htmlpageheader>
+		</tfoot> -->
+	</table>	
 </body>
+</div>
 </html>
 <?php
 $html = ob_get_clean();
 ?>
 
 <?php
-require_once __DIR__ . '/vendor/autoload.php';
+// require_once __DIR__ . '/vendor/autoload.php';
 
-$mpdf = new \Mpdf\Mpdf([
-    'mode' => 'utf-8',
-    'format' => 'A4-L',
-    'orientation' => 'L'
-]);
+// $numero = 20;
+// $html = '
+// <div class="prueba">
+// El número es '.$numero.'
+// </div>';
 
-// $mpdf->WriteHTML('<h1>Hello world!</h1>');
-$mpdf->WriteHTML($html);
-$mpdf->AddPage();
+// $html .= "<div>Prueba</div>";
 
-$ow = $mpdf->h;
-$oh = $mpdf->w;
-$pw = $mpdf->w / 2;
-$ph = $mpdf->h;
+// $mpdf = new \Mpdf\Mpdf([
+//     'format' => 'A4-L',
+//     'margin_left' => 0,
+//     'margin_right' => 0,
+//     'margin_top' => 0,
+//     'margin_bottom' => 0,
+//     'margin_header' => 0,
+//     'margin_footer' => 0,
+// ]);
+
+// $mpdf->SetImportUse();
+
+// $ow = $mpdf->h;
+// $oh = $mpdf->w;
+// $pw = $mpdf->w / 2;
+// $ph = $mpdf->h;
 
 // $mpdf->SetDisplayMode('fullpage');
+
+// $pagecount = $mpdf->SetSourceFile('1 enero 19 di 1.pdf');
+// $pp = GetBookletPages($pagecount);
+
+// foreach ($pp as $v) {
+//     $mpdf->AddPage();
+
+//     if ($v[0] > 0 && $v[0] &le; $pagecount) {
+//         $tplIdx = $mpdf->ImportPage($v[0], 0, 0, $ow, $oh);
+//         $mpdf->UseTemplate($tplIdx, 0, 0, $pw, $ph);
+//     }
+
+//     if ($v[1] > 0 && $v[1] &le; $pagecount) {
+//         $tplIdx = $mpdf->ImportPage($v[1], 0, 0, $ow, $oh);
+//         $mpdf->UseTemplate($tplIdx, $pw, 0, $pw, $ph);
+//     }
+// }
+
+// $mpdf->Output();
+// exit;
+
+// function GetBookletPages($np, $backcover = true) {
+//     $lastpage = $np;
+//     $np = 4 * ceil($np / 4);
+//     $pp = array();
+
+//     for ($i = 1; $i &le; $np / 2; $i++) {
+
+//         $p1 = $np - $i + 1;
+
+//         if ($backcover) {
+//             if ($i == 1) {
+//                 $p1 = $lastpage;
+//             } elseif ($p1 &ge; $lastpage) {
+//                 $p1 = 0;
+//             }
+//         }
+
+//         $pp[] = ($i % 2 == 1)
+//             ? array( $p1,  $i );
+//             : array( $i, $p1 );
+//     }
+
+//     return $pp;
+// }
+
+
+
+$mpdf = new \Mpdf\Mpdf();
+// $mpdf->WriteHTML('<h1>Hello world!</h1>');
+$mpdf->WriteHTML($html);
 
 $mpdf->Output();
 ?>
