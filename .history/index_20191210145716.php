@@ -46,28 +46,6 @@ $years = range(2019, 2030);
 </head>
 
 <body>
-<!-- <form action="generate-pdf.php" method="post">
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="name">Name</label>
-              <input type="text" class="form-control" id="name" name="name">
-            </div>
-            <div class="form-group col-md-6">
-              <label for="email">Email</label>
-              <input type="text" class="form-control" id="email" name="email">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="address">Address</label>
-            <input type="text" class="form-control" id="address" name="address">
-          </div>
-          <div class="form-group">
-            <label for="address">Profile Picture Link</label>
-            <input type="text" class="form-control" id="picture_link" name="picture_link">
-            <label>Example, http://www.mitrajit.com/wp-content/uploads/2019/02/mitrajit.jpg</label>
-          </div>
-          <button type="submit" class="btn btn-primary">Submit & Generate PDF</button>
-        </form> -->
 	<table>
 		<thead>
 			<tr>
@@ -129,34 +107,36 @@ $years = range(2019, 2030);
     <div style="text-align: right>My document</div>
 </htmlpageheader> -->
 
-<!-- <htmlpageheader name="myHeader"> My document </htmlpageheader> -->
+<htmlpageheader name="myHeader"> My document </htmlpageheader>
 </body>
 </html>
 <?php
 $html = ob_get_clean();
-
+<form action="generate-pdf.php" method="post">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" id="name" name="name">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="email">Email</label>
+              <input type="text" class="form-control" id="email" name="email">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" class="form-control" id="address" name="address">
+          </div>
+          <div class="form-group">
+            <label for="address">Profile Picture Link</label>
+            <input type="text" class="form-control" id="picture_link" name="picture_link">
+            <label>Example, http://www.mitrajit.com/wp-content/uploads/2019/02/mitrajit.jpg</label>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit & Generate PDF</button>
+        </form>
 ?>
 
 <?php
-// try {
-// 	$filename = date("d-m-Y H:i:s");
-// 	require_once("vendor/autoload.php");
-// 	$mpdf = new \Mpdf\Mpdf([
-// 	  'mode' => 'l',
-// 	  'margin_top' => 35,
-// 	  'margin_bottom' => 17,
-// 	  'margin_header' => 10,
-// 	  'margin_footer' => 10,
-// 	]);
-// 	$mpdf->showImageErrors = true;
-// 	$mpdf->mirrorMargins = 1;
-// 	$mpdf->SetTitle('Generate PDF file using PHP and MPDF | Mitrajit\'s Tech Blog');
-// 	$mpdf->WriteHTML($html);
-// 	$mpdf->Output($filename, 'I');
-//   } catch(\Mpdf\MpdfException $e) {
-// 	echo $e->getMessage();
-//   }
-
 require_once __DIR__ . '/vendor/autoload.php';
 
 $mpdf = new \Mpdf\Mpdf([

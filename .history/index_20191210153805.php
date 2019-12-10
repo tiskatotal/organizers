@@ -157,24 +157,24 @@ $html = ob_get_clean();
 // 	echo $e->getMessage();
 //   }
 
-require_once __DIR__ . '/vendor/autoload.php';
+// require_once __DIR__ . '/vendor/autoload.php';
 
-$mpdf = new \Mpdf\Mpdf([
-    'mode' => 'utf-8',
-    'format' => 'A4-L',
-    'orientation' => 'L'
-]);
+// $mpdf = new \Mpdf\Mpdf([
+//     'mode' => 'utf-8',
+//     'format' => 'A4-L',
+//     'orientation' => 'L'
+// ]);
 
-// $mpdf->WriteHTML('<h1>Hello world!</h1>');
-$mpdf->WriteHTML($html);
-$mpdf->AddPage();
+// // $mpdf->WriteHTML('<h1>Hello world!</h1>');
+// $mpdf->WriteHTML($html);
+// $mpdf->AddPage();
 
-$ow = $mpdf->h;
-$oh = $mpdf->w;
-$pw = $mpdf->w / 2;
-$ph = $mpdf->h;
+// $ow = $mpdf->h;
+// $oh = $mpdf->w;
+// $pw = $mpdf->w / 2;
+// $ph = $mpdf->h;
 
-// $mpdf->SetDisplayMode('fullpage');
+// // $mpdf->SetDisplayMode('fullpage');
 
-$mpdf->Output();
+// $mpdf->Output();
 ?>

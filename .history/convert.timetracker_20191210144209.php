@@ -65,4 +65,5 @@ function GetBookletPages($np, $backcover = true) {
 
     return $pp;
 	}
+
 ?>

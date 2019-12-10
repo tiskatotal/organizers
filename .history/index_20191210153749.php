@@ -138,43 +138,43 @@ $html = ob_get_clean();
 ?>
 
 <?php
-// try {
-// 	$filename = date("d-m-Y H:i:s");
-// 	require_once("vendor/autoload.php");
-// 	$mpdf = new \Mpdf\Mpdf([
-// 	  'mode' => 'l',
-// 	  'margin_top' => 35,
-// 	  'margin_bottom' => 17,
-// 	  'margin_header' => 10,
-// 	  'margin_footer' => 10,
-// 	]);
-// 	$mpdf->showImageErrors = true;
-// 	$mpdf->mirrorMargins = 1;
-// 	$mpdf->SetTitle('Generate PDF file using PHP and MPDF | Mitrajit\'s Tech Blog');
-// 	$mpdf->WriteHTML($html);
-// 	$mpdf->Output($filename, 'I');
-//   } catch(\Mpdf\MpdfException $e) {
-// 	echo $e->getMessage();
-//   }
+try {
+	$filename = date("d-m-Y H:i:s");
+	require_once("vendor/autoload.php");
+	$mpdf = new \Mpdf\Mpdf([
+	  'mode' => 'l',
+	  'margin_top' => 35,
+	  'margin_bottom' => 17,
+	  'margin_header' => 10,
+	  'margin_footer' => 10,
+	]);
+	$mpdf->showImageErrors = true;
+	$mpdf->mirrorMargins = 1;
+	$mpdf->SetTitle('Generate PDF file using PHP and MPDF | Mitrajit\'s Tech Blog');
+	$mpdf->WriteHTML($html);
+	$mpdf->Output($filename, 'I');
+  } catch(\Mpdf\MpdfException $e) {
+	echo $e->getMessage();
+  }
 
-require_once __DIR__ . '/vendor/autoload.php';
+// require_once __DIR__ . '/vendor/autoload.php';
 
-$mpdf = new \Mpdf\Mpdf([
-    'mode' => 'utf-8',
-    'format' => 'A4-L',
-    'orientation' => 'L'
-]);
+// $mpdf = new \Mpdf\Mpdf([
+//     'mode' => 'utf-8',
+//     'format' => 'A4-L',
+//     'orientation' => 'L'
+// ]);
 
-// $mpdf->WriteHTML('<h1>Hello world!</h1>');
-$mpdf->WriteHTML($html);
-$mpdf->AddPage();
+// // $mpdf->WriteHTML('<h1>Hello world!</h1>');
+// $mpdf->WriteHTML($html);
+// $mpdf->AddPage();
 
-$ow = $mpdf->h;
-$oh = $mpdf->w;
-$pw = $mpdf->w / 2;
-$ph = $mpdf->h;
+// $ow = $mpdf->h;
+// $oh = $mpdf->w;
+// $pw = $mpdf->w / 2;
+// $ph = $mpdf->h;
 
-// $mpdf->SetDisplayMode('fullpage');
+// // $mpdf->SetDisplayMode('fullpage');
 
-$mpdf->Output();
+// $mpdf->Output();
 ?>
