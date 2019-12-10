@@ -3,7 +3,6 @@
 ob_start();
 $date = new DateTime();
 // $day = $date->format('N'); // Day of the month, 2 digits with leading zeros 01 to 31    
-// $week = $date->format('W'); // For weeknumbers ISO-8601 week number of year, weeks starting on Monday 28 through 31 
 $month = $date->format('m'); //Numeric representation of a month, with leading zeros 01 through 12  
 $year = $date->format('Y'); //A full numeric representation of a year, 4 digits 1999 or 2003
 
@@ -11,9 +10,6 @@ if (isset($_REQUEST['day'])) {
     $day = $_REQUEST['day'];
 }
 
-// if (isset($_REQUEST['week'])) {
-//     $week = $_REQUEST['week'];
-// }
 if (isset($_REQUEST['month'])) {
 	$month = $_REQUEST['month'];
 }
@@ -42,8 +38,8 @@ $years = range(2019, 2030);
 
 <head>
 	<meta charset="UTF-8">
-	<title>Calendar</title>
-	<link rel="stylesheet" href="css/calendar.css" />
+	<title>TimeTracker</title>
+	<link rel="stylesheet" href="css/timetracker.css" />
 </head>
 
 <body>	
