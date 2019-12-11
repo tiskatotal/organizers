@@ -39,7 +39,7 @@ $years = range(2019, 2030);
 <head>
 	<meta charset="UTF-8">
 	<title>TimeTracker</title>
-	<link rel="stylesheet" href="timetracker/timetracker_table.css" />
+	<link rel="stylesheet" href="timetracker/css/timetracker_table.css" />
 </head>
 
 <body>

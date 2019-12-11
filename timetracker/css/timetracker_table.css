@@ -1,8 +1,9 @@
 table,
 td,
 th {
-  font-family: 'Aladin', sans-serif;
+  font-family: 'Garuda', sans-serif;
   font-size: 16px;
+  color: red;
 }
 table {
   margin: 0;
