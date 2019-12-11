@@ -21,7 +21,7 @@ $years = range(2018,2030);
 <head>
 	<meta charset="UTF-8">
 	<title>TimeTracker Generate</title>
-	<link rel="stylesheet" href="css/timetracker.css" />
+	<link rel="stylesheet" href="timetracker/timetracker_table.css" />
 </head>
 
 <body>
