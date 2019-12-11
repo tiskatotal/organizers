@@ -1,7 +1,4 @@
 <?php
-// include ('convert.timetracker.php');
-
-use Mpdf\Tag\SetHtmlPageHeader;
 
 ob_start();
 $date = new DateTime();
@@ -28,7 +25,7 @@ $week_days = array('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'satu
 $months = array(1 => 'January', 2 => 'February', 3 => 'March', 4 => 'April', 5 => 'May', 6 => 'June', 7 => 'July', 8 => 'August', 9 => 'September', 10 => 'October', 11 => 'November', 12 => 'December');
 
 $days_in_month = $date->format('d-m-Y'); // t is number of days in given month 28 through 31
-
+$day_week = $date->format('l');
 $last_day_month = $date->format('t'); //number of days in given month
 $first_day_month = $date->format('N'); //Starts the month on the right weekday 1 for monday 7 sunday
 $start_month_day = $date->format('D'); // textual representation
@@ -46,28 +43,6 @@ $years = range(2019, 2030);
 </head>
 
 <body>
-<!-- <form action="generate-pdf.php" method="post">
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="name">Name</label>
-              <input type="text" class="form-control" id="name" name="name">
-            </div>
-            <div class="form-group col-md-6">
-              <label for="email">Email</label>
-              <input type="text" class="form-control" id="email" name="email">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="address">Address</label>
-            <input type="text" class="form-control" id="address" name="address">
-          </div>
-          <div class="form-group">
-            <label for="address">Profile Picture Link</label>
-            <input type="text" class="form-control" id="picture_link" name="picture_link">
-            <label>Example, http://www.mitrajit.com/wp-content/uploads/2019/02/mitrajit.jpg</label>
-          </div>
-          <button type="submit" class="btn btn-primary">Submit & Generate PDF</button>
-        </form> -->
 	<table>
 		<thead>
 			<tr>
@@ -119,17 +94,60 @@ $years = range(2019, 2030);
 			<tr>
 				<td colspan="8"> 
 					<p>Special Days <?php
-						print($last_day_month . ' de ' . $months[$month] . ' de ' . $year); ?>						
+						print($last_day_month . ' de ' . $months[$month] . ' de ' . $year); ?>
 					</p>
 				</td>
 			</tr>
 		</tfoot>
 	</table>
-	<!-- <htmlpageheader name="myHeader1">
-    <div style="text-align: right>My document</div>
-</htmlpageheader> -->
-
-<!-- <htmlpageheader name="myHeader"> My document </htmlpageheader> -->
+	
+		<!-- <?php //add 32 pages and set left and right pages. TR
+			for ($i = 1; $i <= 31; $i++ ) {
+				print('<pagebreak />');
+				if ($i <= $last_day_month) {
+		?> -->
+		<!-- <div style="<?=( $i % 2 === 0 ) ? 'text-align: right;' : '' ?>">
+		<p>Pagina <?=$i?></p>
+		<?php 
+			print($months[$month] . ' ' . $year); 
+			?>
+		</div>
+<?php
+		}
+	}
+?> -->
+<?php //add 32 pages and set left and right pages. TR
+			for ($i = 1; $i <= 31; $i++ ) {
+				print('<pagebreak />');
+				if ($i <= $last_day_month) {
+		?>
+	<div style"<?=( $i % 2 === 0 ) ? 'text-align: right;' : '' ?>">
+		<table>
+			<thead>
+				<tr>
+					<th rowspan="2">
+					<?=$i?>
+					</th>
+					<td>
+					<?php 
+						print($day_week . ' ' . $year); 
+						?>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					<?php 
+						print($months[$month] . ' ' . $year); 
+						?>
+					</td>
+				</tr>
+			</thead>
+		</table>
+	</div>
+<?php
+		}
+	}
+?>
 </body>
 </html>
 <?php
@@ -144,20 +162,19 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 $mpdf = new \Mpdf\Mpdf([
     'mode' => 'utf-8',
-    'format' => 'A4-L',
-    'orientation' => 'L'
+    'format' => 'A5-P',
+    'orientation' => 'P'
 ]);
 
-// $mpdf->WriteHTML('<h1>Hello world!</h1>');
+
 $mpdf->WriteHTML($html);
-$mpdf->AddPage();
 
-$ow = $mpdf->h;
-$oh = $mpdf->w;
-$pw = $mpdf->w / 2;
-$ph = $mpdf->h;
+// $ow = $mpdf->h;
+// $oh = $mpdf->w;
+// $pw = $mpdf->w / 2;
+// $ph = $mpdf->h;
 
-$mpdf->SetDisplayMode('fullpage');
+// $mpdf->SetDisplayMode('fullpage');
 
 $mpdf->Output();
 ?>
