@@ -1,0 +1,94 @@
+a {
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+}
+a:hover {
+  color: brown;
+  text-decoration: underline;
+}
+body,
+table,
+td,
+th {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+}
+.calendar-simple {
+  width: 100%;
+  border: 1px solid brown;
+  box-sizing: border-box;
+}
+.calendar-simple-calendar {
+  box-sizing: border-box;
+}
+.calendar-simple-calendar-head {
+  border: 0.5px solid brown;
+  background: #8DB644;
+  color: white;
+  font-size: 140%;
+}
+.calendar-simple-calendar-head-button {
+  display: inline-block;
+  color: white;
+  margin: 30px 0 30px 30px;
+  width: calc( (100%) / 3 );
+}
+.calendar-simple-calendar-head-title {
+  display: inline-block;
+  width: calc( (100%) / 3 );
+}
+.calendar-simple-calendar-head-today {
+  display: inline-block;
+}
+.calendar-simple-calendar-weekdays {
+  box-sizing: border-box;
+  background: brown;
+  color: white;
+  overflow: auto;
+}
+.calendar-simple-calendar-weekdays > div {
+  height: 5vh;
+  line-height: 5vh;
+  text-align: center;
+  text-transform: capitalize;
+}
+.calendar-simple-calendar-days {
+  box-sizing: border-box;
+  background: white;
+  color: grey;
+  font-size: 23px;
+  overflow: auto;
+}
+.calendar-simple-calendar-days > div {
+  border: 0.5px solid brown;
+  padding: 5px;
+  transition: 250ms linear all;
+}
+.calendar-simple-calendar-days > div:hover {
+  background: rgba(140, 182, 68, 0.562);
+}
+.calendar-simple-calendar-days-special {
+  background: brown;
+  color: #8DB644;
+}
+.calendar-simple-calendar-days-special:hover {
+  color: brown;
+  background: rgba(165, 42, 42, 0.774);
+}
+.calendar-simple-calendar-cell {
+  box-sizing: border-box;
+  float: left;
+  width: calc( (100% - 50px ) / 7 );
+  height: 14vh;
+}
+.calendar-simple-calendar-cell-week {
+  width: 50px;
+  font-size: 15px;
+}
+.calendar-simple-calendar-cell-week:hover ~ div:not(.calendar-simple-calendar-cell-week) {
+  background: #e18787;
+}
+.calendar-simple-calendar-cell-week:hover ~ .calendar-simple-calendar-cell-week ~ div {
+  background: none;
+}

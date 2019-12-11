@@ -1,0 +1,90 @@
+a {
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+}
+a:hover {
+  color: brown;
+  text-decoration: underline;
+}
+body,
+table,
+td,
+th {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+}
+.calendar {
+  width: 100%;
+  box-sizing: border-box;
+}
+.head {
+  display: flex;
+  justify-content: space-around;
+  background: #f5d9d9;
+  font-weight: bold;
+  width: 100%;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+.head-content {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 150%;
+  color: rgba(179, 189, 153, 0.74);
+}
+.body {
+  box-sizing: border-box;
+  width: 100%;
+}
+.rows {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  background: rgba(179, 189, 153, 0.74);
+}
+.rows:hover {
+  background: #f5d9d9;
+}
+.cells {
+  display: inline-block;
+  padding: 25px 1%;
+  color: brown;
+  width: calc( (100%) / 9 );
+  text-align: center;
+}
+.cells:hover {
+  background: #ffffff;
+}
+.headrow {
+  color: brown;
+  background: #f5d9d9;
+  border-top: 5px solid rgba(179, 189, 153, 0.74);
+}
+.headrow-cells {
+  color: brown;
+  background: #f5d9d9;
+  display: inline-block;
+  width: 4%;
+  padding: 25px 0;
+  text-align: center;
+}
+.headrow-cells:hover {
+  background: #ffffff;
+}
+.special {
+  color: white;
+  border: solid #f5d9d9 2px;
+  background: brown;
+}
+.special:hover {
+  color: brown;
+}
+.foot {
+  display: table-footer-group;
+  font-weight: bold;
+  background-color: #ddd;
+}
+.highlight {
+  background: #471675;
+}

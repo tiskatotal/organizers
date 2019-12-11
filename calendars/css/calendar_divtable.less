@@ -1,0 +1,165 @@
+a {
+	color: white;
+	cursor: pointer;
+	text-decoration: none;
+	&:hover {
+		color: brown;
+		text-decoration: underline;
+	}
+}
+
+body, table, td, th {
+	font-family: 'Arial', sans-serif;
+	font-size: 16px;
+}
+
+.calendar {
+	width: 100%;
+	box-sizing: border-box;
+	// border: 2px solid grey;
+}
+.head {
+	display: flex;
+	justify-content: space-around;
+	background: #f5d9d9;
+	font-weight: bold;
+
+	// background-color: rgba(151, 20, 20, 0.151);
+	width: 100%;
+	// border: 2pt solid black;
+	box-sizing: border-box;
+	vertical-align: middle;
+
+	&-content {
+		text-align: center;
+		margin: 20px 0;
+		font-size: 150%;
+		color: rgba(179, 189, 153, 0.74);
+	}
+}
+.body {
+	box-sizing: border-box;
+	width:100%;
+}
+.rows {
+	display: flex;
+	justify-content: space-between;
+	flex-flow: row wrap;
+	background: rgba(179, 189, 153, 0.74);
+	&:hover {
+		background: lighten(brown, 50%);
+	}
+}
+.cells {
+	display: inline-block;
+	padding: 25px 1%;
+	color: brown;
+	// border: 1px solid #999999;
+	width: e('calc( (100%) / 9 )');
+	// width: 80px;
+	text-align: center;
+	&:hover {
+		background: lighten(rgb(174, 223, 39), 50%);
+	}
+}
+.headrow {
+	color: brown;
+	background: #f5d9d9;
+	border-top: 5px solid rgba(179, 189, 153, 0.74);
+	&-cells {
+		// color: rgba(179, 189, 153, 0.74);
+		// font-weight: bold;
+		color: brown;
+		background: #f5d9d9;
+		display: inline-block;
+		width: 4%;
+		// margin: 10px;
+		padding: 25px 0;
+		// border: 1px solid #999999;
+		// width: e('calc( (100%) / 10 )');
+		// width: 80px;
+		text-align: center;
+		&:hover {
+			background: lighten(rgb(174, 223, 39), 50%);
+		}
+	}
+}
+.special {
+	color: white;
+	border: solid  #f5d9d9 2px;
+	background: brown;
+	&:hover {
+		color: brown;
+	}
+
+}
+.foot {
+	display: table-footer-group;
+	font-weight: bold;
+	background-color: #ddd;
+}
+.highlight {
+	background: #471675
+}
+// }
+
+// third calendar in calendar_table file, and for calendartt_table file
+
+
+// label {
+// 	display: block;
+// 	line-height: 30px;
+// 	span {
+// 		display: inline-block;
+// 		width: 120px;
+// 	}
+// 	margin: 5px 0;
+// }
+// input [type="submit"] {
+// 	margin-left: 120px;
+// }
+
+// table {
+// 	margin: 0;
+// 	width: 75%;
+// 	box-sizing: border-box;
+// 	border: 1pt solid black;
+// 	border-collapse: collapse;
+// 	border-spacing: 0;
+// 	tr {
+// 		background: rgb(195, 228, 187);
+// 			&:hover {
+// 				background: brown;
+// 			}
+// 		}
+// 	th {
+// 		background: rgba(240, 115, 13, 0.699);
+// 		height: 80px;
+// 	}
+// 	th, td {
+// 		padding: 1mm 3mm;
+// 		border: 1pt solid black;
+// 		border-collapse: collapse;
+// 		white-space: nowrap;
+// 		&.fit {
+// 			width: 100%;
+// 		}
+// 		&.header {
+// 			// padding: 0;
+// 			width: 60%;
+// 			border: 1px;
+// 			background: rgba(231, 225, 219, 0.5);
+// 		}
+// 	}
+// 	td {
+// 		&:hover {
+// 			background: rgb(231, 222, 222);
+// 		}
+// 	}
+// 	&.holidays {
+// 		td {
+// 			padding: 0.8cm 0;
+// 		}
+// 	}
+	
+// }

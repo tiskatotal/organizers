@@ -1,0 +1,49 @@
+table, td, th {
+	font-family: 'Arial', sans-serif;
+	font-size: 16px;
+}
+
+table {
+	margin: 0;
+	width: 75%;
+	box-sizing: border-box;
+	border: 1pt solid black;
+	border-collapse: collapse;
+	border-spacing: 0;
+	tr {
+		background: rgb(195, 228, 187);
+			&:hover {
+				background: brown;
+			}
+		}
+	th {
+		background: rgba(240, 115, 13, 0.699);
+		height: 80px;
+	}
+	th, td {
+		padding: 1mm 3mm;
+		border: 1pt solid black;
+		border-collapse: collapse;
+		white-space: nowrap;
+		&.fit {
+			width: 100%;
+		}
+		&.header {
+			// padding: 0;
+			width: 60%;
+			border: 1px;
+			background: rgba(231, 225, 219, 0.5);
+		}
+	}
+	td {
+		&:hover {
+			background: rgb(231, 222, 222);
+		}
+	}
+	&.holidays {
+		td {
+			padding: 0.8cm 0;
+		}
+	}
+	
+}

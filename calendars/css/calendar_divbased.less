@@ -1,0 +1,97 @@
+@color_primary: #8DB644;
+
+a {
+	color: white;
+	cursor: pointer;
+	text-decoration: none;
+	&:hover {
+		color: brown;
+		text-decoration: underline;
+	}
+
+}
+body, table, td, th {
+	font-family: 'Arial', sans-serif;
+	font-size: 16px;
+}
+
+.calendar-simple {
+	width: 100%;
+	border: 1px solid brown;
+	box-sizing: border-box;
+	&-calendar {
+		box-sizing: border-box;
+		&-head {
+			border: 0.5px solid brown;
+			background: @color_primary;
+			color: white;
+			font-size: 140%;
+			&-button {
+				display: inline-block;
+				color: white;
+				margin: 30px 0 30px 30px;
+				width: e('calc( (100%) / 3 )');
+			}
+			&-title {
+				display: inline-block;
+				width: e('calc( (100%) / 3 )');
+			}
+			&-today {
+				display: inline-block;
+			}
+		}
+		&-weekdays {
+			box-sizing: border-box;
+			background: brown;
+			color: white;
+			overflow: auto;
+			& > div {
+				height: 5vh;
+				line-height: 5vh;
+				text-align: center;
+				text-transform: capitalize;
+			}
+		}
+		&-days {
+			box-sizing: border-box;
+			background: white;
+			color: grey;
+			font-size: 23px;
+			overflow: auto;
+			& > div {
+				border: 0.5px solid brown;
+				padding: 5px;
+				transition: 250ms linear all;
+				&:hover {
+					background: rgba(140, 182, 68, 0.562);
+				}
+			}
+			&-special {
+				background: brown;
+				color: @color_primary;
+				&:hover {
+					color: brown;
+					background: rgba(165, 42, 42, 0.774);
+				}
+			}
+		}
+		&-cell {
+			box-sizing: border-box;
+			float: left;
+			width: e('calc( (100% - 50px ) / 7 )');
+			height: 14vh;
+			&-week {
+				width: 50px;
+				font-size: 15px;
+				&:hover {
+					& ~ div:not(.calendar-simple-calendar-cell-week) {
+						background: lighten(brown, 30%);
+					}
+					& ~ .calendar-simple-calendar-cell-week ~ div {
+						background: none;
+					}
+				}
+			}
+		}
+	}
+}
