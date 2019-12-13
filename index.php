@@ -2,7 +2,7 @@
 
 ob_start();
 $date = new DateTime();
-// $day = $date->format('N'); // Day of the month, 2 digits with leading zeros 01 to 31    
+$day = $date->format('N'); // Day of the month, 2 digits with leading zeros 01 to 31    
 $month = $date->format('m'); //Numeric representation of a month, with leading zeros 01 through 12  
 $year = $date->format('Y'); //A full numeric representation of a year, 4 digits 1999 or 2003
 
@@ -24,11 +24,11 @@ $week_days = array('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'satu
 
 $months = array(1 => 'January', 2 => 'February', 3 => 'March', 4 => 'April', 5 => 'May', 6 => 'June', 7 => 'July', 8 => 'August', 9 => 'September', 10 => 'October', 11 => 'November', 12 => 'December');
 
-$days_in_month = $date->format('d-m-Y'); // t is number of days in given month 28 through 31
-$day_week = $date->format('l');
-$last_day_month = $date->format('t'); //number of days in given month
+$days_in_month = $date->format('t'); //number of days in given month 28 through 31
+$day_name = $date->format('l'); // full textual respresentation of the day of the week
+$last_day_month = $date->format('t'); //number of days in given month 28 through 31
 $first_day_month = $date->format('N'); //Starts the month on the right weekday 1 for monday 7 sunday
-$start_month_day = $date->format('D'); // textual representation
+$start_month_day = $date->format('D'); // textual representation 3 letters
 $current_cells = array();
 $years = range(2019, 2030);
 ?>
@@ -118,20 +118,42 @@ $years = range(2019, 2030);
 ?> -->
 <?php //add 32 pages and set left and right pages. TR
 			for ($i = 1; $i <= 31; $i++ ) {
+				
 				print('<pagebreak />');
+				
 				if ($i <= $last_day_month) {
 		?>
-	<div style"<?=( $i % 2 === 0 ) ? 'text-align: right;' : '' ?>">
+		<?php
+			// for ($day_name = $first_day_month; $day_name <= $last_day_month; $day_name++ ) {
+			// 	// print('$day_name');
+			// 	if ($day_name <= $last_day_month) {
+			// 	$a = $i;
+			// for ( $a = $i; $a <= 31; $a++ ) {
+				
+
+			// }
+		?>
+
+	<!-- <div style"<?=( $i % 2 === 0 ) ? 'text-align: right;' : '' ?>"> -->
 		<table>
+		<?php
+			$day_name = $i;
+			$day_name = $date->format('l');
+			
+							// print('$day_name');
+							// if ($day_name <= $last_day_month) {
+							
+						?>
 			<thead>
 				<tr>
 					<th rowspan="2">
-					<?=$i?>
+					<?=$i . $day_name?>
 					</th>
-					<td>
-					<?php 
-						print($day_week . ' ' . $year); 
-						?>
+					
+						
+						<td>
+						
+					<?=$i. $day_name?>
 					</td>
 				</tr>
 				<tr>
@@ -144,9 +166,14 @@ $years = range(2019, 2030);
 			</thead>
 		</table>
 	</div>
-<?php
+	<?php
 		}
 	}
+
+?>
+<?php
+		// }
+	// }
 ?>
 </body>
 </html>
@@ -166,15 +193,9 @@ $mpdf = new \Mpdf\Mpdf([
     'orientation' => 'P'
 ]);
 
+$holidays = Yasumi\Yasumi::create('USA', 2019);
 
 $mpdf->WriteHTML($html);
-
-// $ow = $mpdf->h;
-// $oh = $mpdf->w;
-// $pw = $mpdf->w / 2;
-// $ph = $mpdf->h;
-
-// $mpdf->SetDisplayMode('fullpage');
 
 $mpdf->Output();
 ?>
