@@ -15,6 +15,10 @@ class ComposerStaticInitc43d82bcc784cf741cf74ba918ae84b3
         array (
             'setasign\\Fpdi\\' => 14,
         ),
+        'Y' => 
+        array (
+            'Yasumi\\' => 7,
+        ),
         'P' => 
         array (
             'Psr\\Log\\' => 8,
@@ -33,6 +37,10 @@ class ComposerStaticInitc43d82bcc784cf741cf74ba918ae84b3
         'setasign\\Fpdi\\' => 
         array (
             0 => __DIR__ . '/..' . '/setasign/fpdi/src',
+        ),
+        'Yasumi\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/azuyalabs/yasumi/src/Yasumi',
         ),
         'Psr\\Log\\' => 
         array (
