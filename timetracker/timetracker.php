@@ -1,6 +1,7 @@
 <?php
-
 $date = new DateTime();
+
+require 'vendor/autoload.php';
 // $day = $date->format('N'); // Day of the month, 2 digits with leading zeros 01 to 31    
 $month = $date->format('m'); //Numeric representation of a month, with leading zeros 01 through 12  
 $year = $date->format('Y'); //A full numeric representation of a year, 4 digits 1999 or 2003
@@ -8,16 +9,20 @@ $year = $date->format('Y'); //A full numeric representation of a year, 4 digits 
 // if (isset($_REQUEST['day'])) {
 //     $day = $_REQUEST['day'];
 // }
-
-if (isset($_REQUEST['month'])) {
-	$month = $_REQUEST['month'];
-}
-if (isset($_REQUEST['year'])) {
-	$year = $_REQUEST['year'];
-}
-
-$date->setDate($year, $month, 1);
-
+// Use the Yasumi factory to create a new holiday provider instance
+$yasumiProvider = Yasumi\Yasumi::create('Spain', $actual_year, 'es_ES');	
+	
+	if (isset($_REQUEST['month'])) {
+		$month = $_REQUEST['month'];
+	}
+	if (isset($_REQUEST['year'])) {
+		$year = $_REQUEST['year'];
+	}
+	
+	$date->setDate($year, $month, 1);
+// test to set other language for day_of_week	
+// setlocale(LC_ALL, 'nld_nld'); 
+// echo strftime("%A", mktime(0));
 // $week_days = array(1 => 'monday', 2 => 'tuesday', 3 => 'wednesday', 4 => 'thursday', 5 => 'friday', 6 => 'saturday', 7 => 'sunday');
 $week_days = array('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday');
 
@@ -37,10 +42,11 @@ $years = range(2019, 2030);
 <head>
 	<meta charset="UTF-8">
 	<title>TimeTracker</title>
-	<link rel="stylesheet" href="timetracker/css/timetracker_table.css" />
+	<link rel="stylesheet" href="/organizers/timetracker/css/timetracker.css" />
 </head>
 
 <body>
+	<div class='calendar'>
 	<table>
 		<thead>
 			<tr>
@@ -92,38 +98,34 @@ $years = range(2019, 2030);
 			<tr>
 				<td colspan="8">
 					<p>Special Days <?php
-									print($last_day_month . ' de ' . $months[$month] . ' de ' . $year); ?>
+						print($last_day_month . ' de ' . $months[$month] . ' de ' . $year); ?>
 					</p>
 				</td>
 			</tr>
 		</tfoot>
 	</table>
+	</div>
 
 	<?php //add 32 pages and set left and right pages. TR
-			// for ($i = 1; $i <= 31; $i++) {
-			// 	if ($i <= $last_day_month) {
-			// 		print('<pagebreak />');
-					?>
-	<!-- <div style="<?= ($i % 2 === 0) ? 'text-align: right;' : '' ?>"> -->
-		<!-- <p>Pagina <?= $i ?></p> -->
-		<?php
-				// print($months[$month] . ' ' . $year);
-				?>
-		<!-- </div> -->
-		<?php
-		// 	}
-		// }
-		?>
-	<?php //add 32 pages and set left and right pages. TR
-	for ($new_page = 1; $new_page <= 31; $new_page++) {
-		$day_of_week = $date->format('l');
-		print('<pagebreak />');
-		if ($new_page <= $last_day_month) {
+		for ($new_page = 1; $new_page <= 31; $new_page++) {	
+			$day_of_week = $date->format('l');
+
+			print('<pagebreak />');
+			
+			if ($new_page <= $last_day_month) {
+				if ($new_page %  2 == 0) {
+					print "EVEN <div class='even_pages_right'>";
+					} else {
+						print "ODD";
+					}
 			?>
-			<!-- <div style="<?= ($new_page % 2 === 0) ? 'text-align: right;' : '' ?>"> -->
+		<div class='even_pages_right'>
 			<table>
 				<thead>
 					<tr>
+						<?php // generate code for writing table here
+
+						?>
 						<th rowspan="2">
 							<?= $new_page ?>
 						</th>
@@ -140,7 +142,29 @@ $years = range(2019, 2030);
 					</tr>
 				</thead>
 			</table>
-			<!-- </div> -->
+		</div>
+			<div class='odd_pages_left'>
+			<table //ODD default>
+				<thead>
+					<tr>
+						<td>
+							<?= $day_of_week ?>
+						</td>
+						<th rowspan="2">
+							<?= $new_page ?>
+						</th>
+					</tr>
+					<tr>
+						<td>
+							<?php
+								print($months[$month] . ' ' . $year);
+							?>
+						</td>
+					</tr>
+				</thead>
+			</table>
+			</div>
+			
 	<?php
 			$date->add(new DateInterval('P1D')); // to get names of weekdays
 		}

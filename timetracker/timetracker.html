@@ -4,16 +4,17 @@
 <head>
 	<meta charset="UTF-8">
 	<title>TimeTracker</title>
-	<link rel="stylesheet" href="timetracker/css/timetracker.css" />
+	<link rel="stylesheet" href="/organizers/timetracker/css/timetracker.css" />
 </head>
 
-<!-- <body>
-	<?php include('timetracker.php')?>
+<body>
+	
+	<?php=include('timetracker.php')?>
 	<table>
 		<thead>
 			<tr>
 				<th colspan="8">
-					<?php print($months[$month] . ' ' . $year);
+					<?php= print($months[$month] . ' ' . $year);
 					?>
 				</th>
 			</tr>
@@ -82,41 +83,41 @@
 		// 	}
 		// }
 		?> -->
-	<!-- <?php //add 32 pages and set left and right pages. TR
+		<!-- <?php //add 32 pages and set left and right pages. TR
 	for ($new_page = 1; $new_page <= 31; $new_page++) {
 		$day_of_week = $date->format('l');
 		print('<pagebreak />');
 		if ($new_page <= $last_day_month) {
-			?> --> 
-			<!-- <div style="<?= ($new_page % 2 === 0) ? 'text-align: right;' : '' ?>"> -->
-			<table>
-				<thead>
-					<tr>
-						<th rowspan="2">
-							<!-- <?= $new_page ?> -->
-						</th>
-						<td>
-							<!-- <?= $day_of_week ?> -->
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<!-- <?php
+			?> -->
+		<!-- <div style="<?= ($new_page % 2 === 0) ? 'text-align: right;' : '' ?>"> -->
+		<table>
+			<thead>
+				<tr>
+					<th rowspan="2">
+						<!-- <?= $new_page ?> -->
+					</th>
+					<td>
+						<!-- <?= $day_of_week ?> -->
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<!-- <?php
 								print($months[$month] . ' ' . $year);
 							?> -->
-						</td>
-					</tr>
-				</thead>
-			</table>
-			<!-- </div> -->
-	<!-- <?php
+					</td>
+				</tr>
+			</thead>
+		</table>
+		<!-- </div> -->
+		<!-- <?php
 			$date->add(new DateInterval('P1D')); // to get names of weekdays
 		}
 	}
 	?> -->
 </body>
 
-</html> 
+</html>
 
 
 <body>
@@ -175,4 +176,4 @@
 
 </body>
 
-</html> -->
+</html>

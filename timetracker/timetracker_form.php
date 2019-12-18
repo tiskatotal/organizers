@@ -10,9 +10,12 @@ $week_days = array(1 => 'monday', 2 => 'tuesday', 3 => 'wednesday', 4 => 'thursd
 // $week_dagen  = array('maandag','dinsdag','woensdag','donderdag','vrijdag','zaterdag','zondag');
 
 //define the years you want to use
-$years = range(2018,2030);
+$years = range(2018, 2030);
 // $años = range(2000,2030);
 // $jaren = range(2000,2030);
+
+$booklet = array(1 =>'A4 => A5', 2=> 'A3 => A4');
+
 ?>
 
 <!DOCTYPE html>
@@ -21,22 +24,22 @@ $years = range(2018,2030);
 <head>
 	<meta charset="UTF-8">
 	<title>TimeTracker Generate</title>
-	<link rel="stylesheet" href="timetracker/timetracker_table.css" />
+	<link rel="stylesheet" href="timetracker/timetracker.css" />
 </head>
 
 <body>
 	<h1>Select month and year</h1>
-	<form action="timetracker_table.php" method="get">
+	<form action="timetracker.php" method="get">
 		<label>
 			<span>Month</span>
 			<select name="month">
 				<?php
-					foreach ($months as $month_number => $month_names) {
-							$actual_month = date('m');
+				foreach ($months as $month_number => $month_names) {
+					$actual_month = date('m');
 				?>
-				<option value="<?php print($month_number);?>" <?php print($month_number == $actual_month ? 'selected':'');?>><?php print($month_names);?></option>
+					<option value="<?php print($month_number); ?>" <?php print($month_number == $actual_month ? 'selected' : ''); ?>><?php print($month_names); ?></option>
 				<?php
-					}
+				}
 				?>
 			</select>
 		</label>
@@ -45,12 +48,29 @@ $years = range(2018,2030);
 			<span>Year</span>
 			<select name="year">
 				<?php
-					foreach ($years as $year_number) {
-						$actual_year = date('Y');
-				?>	
-				<option value="<?php print($year_number);?>" <?php print($year_number == $actual_year ? 'selected':'');?>><?php print($year_number);?></option>
+				foreach ($years as $year_number) {
+					$actual_year = date('Y');
+				?>
+					<option value="<?php print($year_number); ?>" <?php print($year_number == $actual_year ? 'selected' : ''); ?>><?php print($year_number); ?></option>
 				<?php
-					}
+				}
+				?>
+			</select>
+		</label>
+		<!-- <input type="submit" value="Generate" /> -->
+
+		<label>
+			<span>Size</span>
+			<select name="Size timetracker">
+				<?php
+				foreach ($booklet as $size_booklet) {
+					$actual_size = '';
+				?>
+				<option value="<?php print($size_booklet); ?>" <?php print($size_booklet == $actual_size ? 'selected' : ''); ?>><?php print($size_booklet); ?></option>
+				<!-- <option value=></option>
+				<option value=""></option> -->
+				<?php
+				}
 				?>
 			</select>
 		</label>

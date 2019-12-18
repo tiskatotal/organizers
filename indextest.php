@@ -31,6 +31,7 @@ $first_day_month = $date->format('N'); //Starts the month on the right weekday 1
 $start_month_day = $date->format('D'); // textual representation 3 letters
 $current_cells = array();
 $years = range(2019, 2030);
+
 ?>
 
 <!DOCTYPE html>
@@ -39,68 +40,71 @@ $years = range(2019, 2030);
 <head>
 	<meta charset="UTF-8">
 	<title>TimeTracker</title>
-	<link rel="stylesheet" href="timetracker/css/timetracker_table.css" />
+	<link rel="stylesheet" href="timetracker/css/timetracker.css" />
 </head>
 
 <body>
-	<table>
-		<thead>
-			<tr>
-				<th colspan="8">
-					<?php print($months[$month] . ' ' . $year);
+	<div class='calendar'>
+		<table>
+			<thead>
+				<tr>
+					<th colspan="8">
+						<?php print($months[$month] . ' ' . $year);
+						// var_dump($holidays);
+
+						?>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th> Week</th>
+					<?php
+					foreach ($week_days as $key => $value) {
+						print '<th>' . $value . '</th>';
+					}
 					?>
-				</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<th> Week</th>
+				</tr>
 				<?php
-				foreach ($week_days as $key => $value) {
-					print '<th>' . $value . '</th>';
+				$current_week = $date->format('W'); // ISO week numbers in years
+				$current_day = 1;
+				while ($current_day <= $last_day_month) {
+					print '<tr>';
+					print '<th>' . $current_week . '</th>';
+
+					$painted_cells = 0;
+					// Nos faltan los 7 días L a D
+					if ($current_day == 1) {
+						for ($empty_cell = 1; $empty_cell < $first_day_month; $empty_cell++) {
+							print '<td></td>';
+							$painted_cells++;
+						}
+					}
+					// paint a cell for every day of the month
+					for ($painted_cells; $painted_cells < 7; $painted_cells++) {
+						if ($current_day <= $last_day_month) {
+							print '<td>' . $current_day . '</td>';
+						} else {
+							print '<td></td>';
+						}
+						$current_day++;
+					}
+					$current_week++;
+					print '</tr>';
 				}
 				?>
-			</tr>
-			<?php
-			$current_week = $date->format('W'); // ISO week numbers in years
-			$current_day = 1;
-			while ($current_day <= $last_day_month) {
-				print '<tr>';
-				print '<th>' . $current_week . '</th>';
-
-				$painted_cells = 0;
-				// Nos faltan los 7 días L a D
-				if ($current_day == 1) {
-					for ($empty_cell = 1; $empty_cell < $first_day_month; $empty_cell++) {
-						print '<td></td>';
-						$painted_cells++;
-					}
-				}
-				// paint a cell for every day of the month
-				for ($painted_cells; $painted_cells < 7; $painted_cells++) {
-					if ($current_day <= $last_day_month) {
-						print '<td>' . $current_day . '</td>';
-					} else {
-						print '<td></td>';
-					}
-					$current_day++;
-				}
-				$current_week++;
-				print '</tr>';
-			}
-			?>
-		</tbody>
-		<tfoot>
-			<tr>
-				<td colspan="8">
-					<p>Special Days <?php
-									print($last_day_month . ' de ' . $months[$month] . ' de ' . $year); ?>
-					</p>
-				</td>
-			</tr>
-		</tfoot>
-	</table>
-
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="8">
+						<p>Special Days <?php
+							print($last_day_month . ' de ' . $months[$month] . ' de ' . $year); ?>
+						</p>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
 	<?php //add 32 pages and set left and right pages. TR
 			// for ($i = 1; $i <= 31; $i++) {
 			// 	if ($i <= $last_day_month) {
@@ -121,8 +125,36 @@ $years = range(2019, 2030);
 		$day_of_week = $date->format('l');
 		print('<pagebreak />');
 		if ($new_page <= $last_day_month) {
-			?>
-			<!-- <div style="<?= ($new_page % 2 === 0) ? 'text-align: right;' : '' ?>"> -->
+			if ($new_page %  2 == 0) {
+			print "EVEN";
+			}
+			else {
+				print "ODD";
+			}
+	?>
+		<!-- <div style='even_pages_right"<?= ($new_page % 2 === 0) ? 'even_pages_right;' : '' ?>"'> -->
+		<div class='even_pages_right'>
+			<table>
+				<thead>
+					<tr>
+						<td>
+							<?= $day_of_week ?>
+						</td>
+						<th rowspan="2">
+							<?= $new_page ?>
+						</th>
+					</tr>
+					<tr>
+						<td>
+							<?php
+								print($months[$month] . ' ' . $year);
+							?>
+						</td>
+					</tr>
+				</thead>
+			</table>
+		</div>
+		<div class='odd_pages_left'>
 			<table>
 				<thead>
 					<tr>
@@ -142,7 +174,7 @@ $years = range(2019, 2030);
 					</tr>
 				</thead>
 			</table>
-			<!-- </div> -->
+		</div>
 	<?php
 			$date->add(new DateInterval('P1D')); // to get names of weekdays
 		}
@@ -151,23 +183,28 @@ $years = range(2019, 2030);
 </body>
 
 </html>
+
 <?php
 $html = ob_get_clean();
-
 ?>
 
 <?php
-
 require_once __DIR__ . '/vendor/autoload.php';
+
+$holidays = Yasumi\Yasumi::create('SPAIN', 2019);
 
 $mpdf = new \Mpdf\Mpdf([
 	'mode' => 'utf-8',
 	'format' => 'A5-P',
-	'orientation' => 'P'
+	'orientation' => 'P',
+	// 'type' => 'E',
+	'margin_top' => 20,
+	'margin_left' => 10,
+	'margin_right' => 10,
+	'mirrormargins' => true
 	]);
 	
 	$mpdf->WriteHTML($html);
-	// $mpdf->Output('organizers/pdf_file_name.pdf', 'F');
 	
 	$mpdf->Output();
 
