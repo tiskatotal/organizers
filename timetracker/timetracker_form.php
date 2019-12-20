@@ -14,7 +14,9 @@ $years = range(2018, 2030);
 // $años = range(2000,2030);
 // $jaren = range(2000,2030);
 
-$booklet = array(1 =>'A4 => A5', 2=> 'A3 => A4');
+$size = array(1 => 'A4 => A5', 2 => 'A3 => A4');
+$language = array('en' =>'English', 'es' => 'Español', 'nl' => 'Nederlands');
+$cover = array(1 => 'wood', 2 => 'metal', 3 => 'custom cut');
 
 ?>
 
@@ -24,12 +26,39 @@ $booklet = array(1 =>'A4 => A5', 2=> 'A3 => A4');
 <head>
 	<meta charset="UTF-8">
 	<title>TimeTracker Generate</title>
-	<link rel="stylesheet" href="timetracker/timetracker.css" />
+	<link rel="stylesheet" href="/organizers/timetracker/css/timetracker_form.css" />
 </head>
 
 <body>
-	<h1>Select month and year</h1>
+	<h1>SELECT => language, year, month, size, cover for TimeTracker</h1>
 	<form action="timetracker.php" method="get">
+		<label>
+			<span>Language</span>
+			<select name="language">
+				<?php
+				foreach ($language as $lang_iso => $lang_txt) {
+				?>
+				<option value="<?php print($lang_iso); ?>"><?php print($lang_txt); ?></option>
+				<?php
+				}
+				?>
+			</select>
+		</label>
+		
+		<label>
+			<span>Year</span>
+			<select name="year">
+				<?php
+				foreach ($years as $year_number) {
+					$actual_year = date('Y');
+				?>
+					<option value="<?php print($year_number); ?>" <?php print($year_number == $actual_year ? 'selected' : ''); ?>><?php print($year_number); ?></option>
+				<?php
+				}
+				?>
+			</select>
+		</label>
+
 		<label>
 			<span>Month</span>
 			<select name="month">
@@ -45,35 +74,33 @@ $booklet = array(1 =>'A4 => A5', 2=> 'A3 => A4');
 		</label>
 
 		<label>
-			<span>Year</span>
-			<select name="year">
-				<?php
-				foreach ($years as $year_number) {
-					$actual_year = date('Y');
-				?>
-					<option value="<?php print($year_number); ?>" <?php print($year_number == $actual_year ? 'selected' : ''); ?>><?php print($year_number); ?></option>
-				<?php
-				}
-				?>
-			</select>
-		</label>
-		<!-- <input type="submit" value="Generate" /> -->
-
-		<label>
 			<span>Size</span>
-			<select name="Size timetracker">
+			<select name="size">
 				<?php
-				foreach ($booklet as $size_booklet) {
+				foreach ($size as $size_booklet) {
 					$actual_size = '';
 				?>
 				<option value="<?php print($size_booklet); ?>" <?php print($size_booklet == $actual_size ? 'selected' : ''); ?>><?php print($size_booklet); ?></option>
-				<!-- <option value=></option>
-				<option value=""></option> -->
 				<?php
 				}
 				?>
 			</select>
 		</label>
+
+		<label>
+			<span>Cover</span>
+			<select name="cover">
+				<?php
+				foreach ($cover as $type_cover) {
+					$actual_cover = '';
+				?>
+				<option value="<?php print($type_cover); ?>" <?php print($type_cover == $actual_cover ? 'selected' : ''); ?>><?php print($type_cover); ?></option>
+				<?php
+				}
+				?>
+			</select>
+		</label>
+		
 		<input type="submit" value="Generate" />
 	</form>
 </body>

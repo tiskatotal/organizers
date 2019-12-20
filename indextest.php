@@ -40,7 +40,7 @@ $years = range(2019, 2030);
 <head>
 	<meta charset="UTF-8">
 	<title>TimeTracker</title>
-	<link rel="stylesheet" href="timetracker/css/timetracker.css" />
+	<link rel="stylesheet" href="/organizers/timetracker/css/timetracker.css" />
 </head>
 
 <body>
@@ -50,8 +50,6 @@ $years = range(2019, 2030);
 				<tr>
 					<th colspan="8">
 						<?php print($months[$month] . ' ' . $year);
-						// var_dump($holidays);
-
 						?>
 					</th>
 				</tr>
@@ -105,80 +103,31 @@ $years = range(2019, 2030);
 			</tfoot>
 		</table>
 	</div>
+
 	<?php //add 32 pages and set left and right pages. TR
-			// for ($i = 1; $i <= 31; $i++) {
-			// 	if ($i <= $last_day_month) {
-			// 		print('<pagebreak />');
-					?>
-	<!-- <div style="<?= ($i % 2 === 0) ? 'text-align: right;' : '' ?>"> -->
-		<!-- <p>Pagina <?= $i ?></p> -->
-		<?php
-				// print($months[$month] . ' ' . $year);
-				?>
-		<!-- </div> -->
-		<?php
-		// 	}
-		// }
-		?>
-	<?php //add 32 pages and set left and right pages. TR
-	for ($new_page = 1; $new_page <= 31; $new_page++) {
-		$day_of_week = $date->format('l');
-		print('<pagebreak />');
-		if ($new_page <= $last_day_month) {
-			if ($new_page %  2 == 0) {
-			print "EVEN";
-			}
-			else {
-				print "ODD";
-			}
+		for ($new_page = 1; $new_page <= 31; $new_page++) {
+			$day_of_week = $date->format('l');
+			print('<pagebreak />');
+		
+			//test if odd or even, dont forget to put curly brackets bottom
+		// 	if ($new_page <= $last_day_month) {
+		// 		if ($new_page %  2 === 0) {
+		// 		print "EVEN";
+		// 		}
+		// 		else {
+		// 			print "ODD";
+		// 		}
 	?>
-		<!-- <div style='even_pages_right"<?= ($new_page % 2 === 0) ? 'even_pages_right;' : '' ?>"'> -->
-		<div class='even_pages_right'>
-			<table>
-				<thead>
-					<tr>
-						<td>
-							<?= $day_of_week ?>
-						</td>
-						<th rowspan="2">
-							<?= $new_page ?>
-						</th>
-					</tr>
-					<tr>
-						<td>
-							<?php
-								print($months[$month] . ' ' . $year);
-							?>
-						</td>
-					</tr>
-				</thead>
-			</table>
-		</div>
-		<div class='odd_pages_left'>
-			<table>
-				<thead>
-					<tr>
-						<th rowspan="2">
-							<?= $new_page ?>
-						</th>
-						<td>
-							<?= $day_of_week ?>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<?php
-								print($months[$month] . ' ' . $year);
-							?>
-						</td>
-					</tr>
-				</thead>
-			</table>
-		</div>
+	<div style="<?= ($new_page % 2 === 0) ? 'text-align: right;' : '' ?>"> 
+		<p><?= $day_of_week ?></p>
+		<!-- <p><?= $new_page ?></p> -->
+		<?php
+		print($new_page . '   ' . $months[$month] . ' ' . $year);
+		?>
+	 </div>
 	<?php
 			$date->add(new DateInterval('P1D')); // to get names of weekdays
 		}
-	}
 	?>
 </body>
 
@@ -191,17 +140,10 @@ $html = ob_get_clean();
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
 
-$holidays = Yasumi\Yasumi::create('SPAIN', 2019);
-
 $mpdf = new \Mpdf\Mpdf([
 	'mode' => 'utf-8',
 	'format' => 'A5-P',
 	'orientation' => 'P',
-	// 'type' => 'E',
-	'margin_top' => 20,
-	'margin_left' => 10,
-	'margin_right' => 10,
-	'mirrormargins' => true
 	]);
 	
 	$mpdf->WriteHTML($html);

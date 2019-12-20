@@ -1,7 +1,9 @@
 <?php
+
 $date = new DateTime();
 
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
+
 // $day = $date->format('N'); // Day of the month, 2 digits with leading zeros 01 to 31    
 $month = $date->format('m'); //Numeric representation of a month, with leading zeros 01 through 12  
 $year = $date->format('Y'); //A full numeric representation of a year, 4 digits 1999 or 2003
@@ -9,8 +11,7 @@ $year = $date->format('Y'); //A full numeric representation of a year, 4 digits 
 // if (isset($_REQUEST['day'])) {
 //     $day = $_REQUEST['day'];
 // }
-// Use the Yasumi factory to create a new holiday provider instance
-$yasumiProvider = Yasumi\Yasumi::create('Spain', $actual_year, 'es_ES');	
+
 	
 	if (isset($_REQUEST['month'])) {
 		$month = $_REQUEST['month'];
@@ -20,6 +21,10 @@ $yasumiProvider = Yasumi\Yasumi::create('Spain', $actual_year, 'es_ES');
 	}
 	
 	$date->setDate($year, $month, 1);
+
+// Use the Yasumi factory to create a new holiday provider instance
+// $yasumiProvider = Yasumi\Yasumi::create('Spain', $actual_year, 'es_ES');	
+
 // test to set other language for day_of_week	
 // setlocale(LC_ALL, 'nld_nld'); 
 // echo strftime("%A", mktime(0));
@@ -107,66 +112,50 @@ $years = range(2019, 2030);
 	</div>
 
 	<?php //add 32 pages and set left and right pages. TR
-		for ($new_page = 1; $new_page <= 31; $new_page++) {	
+		for ($new_page = 1; $new_page <= 31; $new_page++) {
 			$day_of_week = $date->format('l');
-
 			print('<pagebreak />');
 			
 			if ($new_page <= $last_day_month) {
-				if ($new_page %  2 == 0) {
-					print "EVEN <div class='even_pages_right'>";
-					} else {
+				if ($new_page %  2 === 0) {
+					print "EVEN";
+				} else {
 						print "ODD";
 					}
-			?>
-		<div class='even_pages_right'>
-			<table>
-				<thead>
-					<tr>
-						<?php // generate code for writing table here
+	?>
+	<!-- <div class="<?= ($new_page % 2 === 0) ? 'even_pages_right;' : '' ?>"'> -->
+	<!-- <div style="<?= ($i % 2 === 0) ? 'text-align: right;' : '' ?>">  -->
 
-						?>
-						<th rowspan="2">
-							<?= $new_page ?>
-						</th>
-						<td>
-							<?= $day_of_week ?>
-						</td>
+
+		<table>
+			<thead>
+				<?php // generate code for writing table left and right page here
+					
+				if ($new_page % 2 === 0) {
+					
+
+					print "<tr class='even_pages_right'>
+					<td>" . ($day_of_week) . "</td>
+					<th rowspan='2'>". ($new_page) . "</th>
 					</tr>
-					<tr>
-						<td>
-							<?php
-								print($months[$month] . ' ' . $year);
-							?>
-						</td>
+					<tr class='even_pages_right'>
+					<td>" . ($months[$month] . ' ' . $year) . "</td>
+					</tr>";
+					}
+					else {
+					print "<tr class='odd_pages_left'>
+					<th rowspan='2'>". ($new_page) . "</th>
+					<td>" . ($day_of_week) . "</td>
 					</tr>
-				</thead>
-			</table>
-		</div>
-			<div class='odd_pages_left'>
-			<table //ODD default>
-				<thead>
-					<tr>
-						<td>
-							<?= $day_of_week ?>
-						</td>
-						<th rowspan="2">
-							<?= $new_page ?>
-						</th>
-					</tr>
-					<tr>
-						<td>
-							<?php
-								print($months[$month] . ' ' . $year);
-							?>
-						</td>
-					</tr>
-				</thead>
-			</table>
-			</div>
-			
+					<tr class='odd_pages_left'>
+					<td>" . ($months[$month] . ' ' . $year) . "</td>
+					</tr>";
+				}
+				?>
+			</thead>
+		</table>
 	<?php
-			$date->add(new DateInterval('P1D')); // to get names of weekdays
+		$date->add(new DateInterval('P1D')); // to get names of weekdays
 		}
 	}
 	?>

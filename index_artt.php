@@ -1,7 +1,10 @@
 <?php
+
+ob_start();
+
 date_default_timezone_set("Europe/Madrid");
 
-require '../vendor/autoload.php';
+require 'vendor/autoload.php';
 
 
 if (isset($_REQUEST["month"])) {   
@@ -54,8 +57,8 @@ $yasumiProvider = Yasumi\Yasumi::create('Spain', $actual_year, 'es_ES');
 
 <head>
     <meta charset="UTF-8">
-    <title>Calendartt</title>
-    <link rel="stylesheet" href="css/calendar_table.css" />
+    <title>timetracker_artt</title>
+    <link rel="stylesheet" href="/organizers/timetracker/css/timetracker.css" />
 	<style>
 		.dias{
 		 	border:solid black 5px;
@@ -182,4 +185,32 @@ $yasumiProvider = Yasumi\Yasumi::create('Spain', $actual_year, 'es_ES');
 			<td>&nbsp;</td>
 		</tr>
 	</table>
+
+	
 </html>
+
+<?php
+$html = ob_get_clean();
+?>
+
+<?php
+require_once __DIR__ . '/vendor/autoload.php';
+
+// $holidays = Yasumi\Yasumi::create('SPAIN', 2019);
+
+$mpdf = new \Mpdf\Mpdf([
+	'mode' => 'utf-8',
+	'format' => 'A5-P',
+	'orientation' => 'P',
+	// 'type' => 'E',
+	'margin_top' => 20,
+	'margin_left' => 10,
+	'margin_right' => 10,
+	'mirrormargins' => true
+	]);
+	
+	$mpdf->WriteHTML($html);
+	
+	$mpdf->Output();
+
+?>
