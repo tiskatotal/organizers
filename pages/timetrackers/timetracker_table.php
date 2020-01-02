@@ -35,8 +35,9 @@ $today = date('j F Y'); // day of the month without leading zeros, full text.rep
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
-	<title>Calendar</title>
-	<link rel="stylesheet" href="css/calendar_table.css" />
+	<title>TimeTracker</title>
+	<link rel="stylesheet" href="../../assets/css_timetracker/timetracker_table.css" />
+
 </head>
 <body>
 	<table>

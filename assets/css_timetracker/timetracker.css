@@ -1,7 +1,7 @@
 .calendar table,
 .calendar td,
 .calendar th {
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, sans-serif;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 16px;
   color: #ff009d;
 }
@@ -49,29 +49,33 @@
 .even_pages_right td,
 .odd_pages_left td {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   margin: 0;
   padding: 0;
 }
 .even_pages_right td.day,
 .odd_pages_left td.day {
-  font-size: 50px;
+  font-size: 40px;
   margin: 0;
-  padding: 0;
+  padding: 0 5;
+}
+.even_pages_right td .month,
+.odd_pages_left td .month {
+  text-decoration: underline;
 }
 .even_pages_right td .year,
 .odd_pages_left td .year {
   display: inline-block;
-  margin: 0 10px;
+  margin: 10 10px;
 }
 .even_pages_right td {
-  color: #ff009d;
+  color: black;
   text-align: right ;
 }
 .odd_pages_left td {
-  color: #521ee0;
+  color: black;
 }
 pagebreak {
-  display: block;
+  display: inline-block;
   height: 100px;
 }

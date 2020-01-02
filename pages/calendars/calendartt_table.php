@@ -1,7 +1,7 @@
 <?php
 date_default_timezone_set("Europe/Madrid");
 
-require '../vendor/autoload.php';
+require '../../vendor/autoload.php';
 
 
 if (isset($_REQUEST["month"])) {   
@@ -55,7 +55,8 @@ $yasumiProvider = Yasumi\Yasumi::create('Spain', $actual_year, 'es_ES');
 <head>
     <meta charset="UTF-8">
     <title>Calendartt</title>
-    <link rel="stylesheet" href="css/calendar_table.css" />
+	<link rel="stylesheet" href="../../assets/css_calendar/calendar_table.css" />
+
 	<style>
 		.dias{
 		 	border:solid black 5px;

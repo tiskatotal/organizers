@@ -1,51 +1,18 @@
 <?php
 
 ob_start();
+// include 'pages/timetrackers/timetracker.php';
+include 'classes/inc/lang.php';
+include 'classes/inc/dateset.php';
 
-$date = new DateTime();
-$lang_short = 'es';
-$lang_long = 'es_ES';
 require 'vendor/autoload.php';
-// include 'inc/lang.php';
 
-
-
-// $day = $date->format('N'); // Day of the month, 2 digits with leading zeros 01 to 31    
-$month = $date->format('m'); //Numeric representation of a month, with leading zeros 01 through 12  
-$year = $date->format('Y'); //A full numeric representation of a year, 4 digits 1999 or 2003
-
-// if (isset($_REQUEST['day'])) {
-//     $day = $_REQUEST['day'];
-// }
-
-	
-	if (isset($_REQUEST['month'])) {
-		$month = $_REQUEST['month'];
-	}
-	if (isset($_REQUEST['year'])) {
-		$year = $_REQUEST['year'];
-	}
-	
-	$date->setDate($year, $month, 1);
-
-// $week_days = array(1 => 'monday', 2 => 'tuesday', 3 => 'wednesday', 4 => 'thursday', 5 => 'friday', 6 => 'saturday', 7 => 'sunday');
-$week_days = array('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday');
-
-$months = array(1 => 'January', 2 => 'February', 3 => 'March', 4 => 'April', 5 => 'May', 6 => 'June', 7 => 'July', 8 => 'August', 9 => 'September', 10 => 'October', 11 => 'November', 12 => 'December');
-
-$days_in_month = $date->format('t'); //number of days in given month 28 through 31
-$day_of_week = $date->format('l'); // full textual respresentation of the day of the week
-$last_day_month = $date->format('t'); //number of days in given month 28 through 31
-$first_day_month = $date->format('N'); //Starts the month on the right weekday 1 for monday 7 sunday
-$start_month_day = $date->format('D'); // textual representation 3 letters
-$current_cells = array();
-$years = range(2019, 2030);
 
 // Use the Yasumi factory to create a new holiday provider instance CHANGE VARIABLE
 $yasumiProvider = Yasumi\Yasumi::create('Spain', $year, 'es_ES');
 $holidays           = Yasumi\Yasumi::create('Spain', $year);
 $holidaysInDecember = $holidays->between(
-                        new DateTime('12/01/' . $year),
+                        new DateTime('12/01/' . $year), //CHANGE TO ISO DATES
                         new DateTime('12/31/' . $year)
                       );
 
@@ -56,7 +23,7 @@ $holidaysInDecember = $holidays->between(
 <head>
 	<meta charset="UTF-8">
 	<title>TimeTracker</title>
-	<link rel="stylesheet" href="/organizers/timetracker/css/timetracker.css" />
+	<link rel="stylesheet" href="organizers/assets/css_timetracker/timetracker.css" />
 </head>
 
 <body>
@@ -65,7 +32,12 @@ $holidaysInDecember = $holidays->between(
 		<thead>
 			<tr>
 				<th colspan="8">
-					<?php print($months[$month] . ' ' . $year);
+					<?php
+						foreach ($month_names['es'] as $key => $value){
+							if ($key == $month) {
+							print ($value . '  ' . $year);
+						}
+					}
 					?>
 				</th>
 			</tr>
@@ -74,9 +46,9 @@ $holidaysInDecember = $holidays->between(
 			<tr>
 				<th> Week</th>
 				<?php
-				foreach ($week_days as $key => $value) {
+				foreach ($day_names['es'] as $key => $value) {
 					print '<th>' . $value . '</th>';
-				}
+					}
 				?>
 			</tr>
 			<?php
@@ -128,6 +100,11 @@ $holidaysInDecember = $holidays->between(
 	</div>
 
 	<?php //add 32 pages and set left and right pages. TR
+		foreach ($month_names['es'] as $key => $value){
+			if ($key == $month) {
+			print ($value . '  ' . $year);
+			}
+		}
 		for ($new_page = 1; $new_page <= 31; $new_page++) {
 			$day_of_week = $date->format('l');
 			print('<pagebreak />');
@@ -138,19 +115,20 @@ $holidaysInDecember = $holidays->between(
 				print "<tr class='even_pages_right'>
 					<td>
 						<div class='weekday'>" . ($day_of_week) . "</div>
-						<div class='month'>" . ($months[$month] . "<span class='year'>" . $year) . "</span></div>
+						<div class='month'>" . ($months[$month]) . "</div>
 					</td>
-					<td class='day'>". ($new_page) . "</td>
+					<td class='day'>" . ($new_page) . "</td>
 				</tr>";
 				} else {
 				print "<tr class='odd_pages_left'>
 					<td class='day'>". ($new_page) . "</td>
 					<td>
 					<div class='weekday'>" . ($day_of_week) . "</div>
-					<div class='month'>" . ($months[$month] . "<span class='year'>" . $year) . "</span></div>
+					<div class='month'>" . ($months[$month]) . "</div>
 					</td>
 				</tr>";
 			}
+			// print year or something else <span class='year'>" . $year) . "</span>
 			?>
 		</table>
 	<?php

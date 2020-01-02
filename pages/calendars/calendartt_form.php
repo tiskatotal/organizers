@@ -1,18 +1,16 @@
 <?php
+include '../../classes/inc/lang.php';
+include '../../classes/inc/dateset.php';
 //define the months
 $months = array(1 => 'January', 2 => 'February',	3 => 'March',	4 => 'April',	5 => 'May',	6 => 'June',	7 => 'July',	8 => 'August',	9 => 'September',	10 => 'October', 11 => 'November',	12 => 'December');
-// $nombre_mes = array(1 => 'Enero', 2 => 'Febrero',	3 => 'Marzo',	4 => 'Abril',	5 => 'Mayo',	6 => 'Junio',	7 => 'Julio',	8 => 'Agosto',	9 => 'Septiembre',	10 => 'Octubre', 11 => 'Noviembre',	12 => 'Diciembre',);
-// $maand_namen = array(1 => 'Januari', 2 => 'Februari', 3 => 'Maart', 4 => 'April', 5 => 'Mei', 6 => 'Juni', 7 => 'Juli', 8 => 'Augustus', 9 => 'September', 10 => 'Oktober', 11 => 'November', 12 => 'December');
+
 
 //define the days of the week
 $week_days = array(1 => 'monday', 2 => 'tuesday', 3 => 'wednesday', 4 => 'thursday', 5 => 'friday', 6 => 'saturday', 7 => 'sunday');
-// $semana_dias = array('lunes','martes','mièrcoles','jueves','viernes','sabado','domingo');
-// $week_dagen  = array('maandag','dinsdag','woensdag','donderdag','vrijdag','zaterdag','zondag');
 
 //define the years you want to use
 $years = range(2018,2030);
-// $años = range(2000,2030);
-// $jaren = range(2000,2030);
+
 ?>
 
 <!DOCTYPE html>

@@ -1,30 +1,15 @@
 <?php
-
-$date = new DateTime();
-
-$month = $date->format('m'); //Numeric representation of a month, with leading zeros 01 through 12  
-$year = $date->format('Y'); //A full numeric representation of a year, 4 digits 1999 or 2003
-
-
-if (isset($_REQUEST['month'])) {
-	$month = $_REQUEST['month'];
-}
-if (isset($_REQUEST['year'])) {
-	$year = $_REQUEST['year'];
-}
-
-$date->setDate($year, $month, 1);
+include '../../classes/inc/lang.php';
+include '../../classes/inc/dateset.php';
 
 $week_days = array('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday');
-
-$months = array(1 => 'January', 2 => 'February', 3 => 'March', 4 => 'April', 5 => 'May', 6 => 'June', 7 => 'July', 8 => 'August', 9 => 'September', 10 => 'October', 11 => 'November', 12 => 'December');
 
 $days_in_month = $date->format('t'); // t is number of days in given month 28 through 31
 
 $last_day_month = $date->format('t'); //number of days in given month
 $first_day_month = $date->format('N'); //Starts the month on the right weekday 1 for monday 7 sunday
 $start_month_day = $date->format('D'); // textual representation
-$years = range(2019, 2030);
+// $years = range(2019, 2030);
 
 $today = date('j F Y'); // day of the month without leading zeros, full text.repres. monthname, full numeric prex. year
 
@@ -37,7 +22,8 @@ $today = date('j F Y'); // day of the month without leading zeros, full text.rep
 <head>
 	<meta charset="UTF-8">
 	<title>Calendar</title>
-	<link rel="stylesheet" href="css/calendar_divtable.css" />
+	<link rel="stylesheet" href="../../assets/css_calendar/calendar_divtable.css" />
+
 </head>
 <body>
 	<div class="calendar">

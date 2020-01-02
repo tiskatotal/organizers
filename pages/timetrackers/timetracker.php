@@ -1,10 +1,8 @@
 <?php
-
-ob_start();
-include 'classes/inc/lang.php';
-include 'classes/inc/dateset.php';
+include '../../classes/inc/lang.php';
+include '../../classes/inc/dateset.php';
 // include ('../classes/class.organizer.php');
-require 'vendor/autoload.php';
+require '../../vendor/autoload.php';
 
 // Use the Yasumi factory to create a new holiday provider instance
 // $yasumiProvider = Yasumi\Yasumi::create('Spain', $actual_year, 'es_ES');	
@@ -15,7 +13,7 @@ require 'vendor/autoload.php';
 <head>
 	<meta charset="UTF-8">
 	<title>TimeTracker</title>
-	<link rel="stylesheet" href="assets/css_timetracker/timetracker.css" />
+	<link rel="stylesheet" href="../../assets/css_timetracker/timetracker.css" />
 </head>
 
 <body>
@@ -25,11 +23,11 @@ require 'vendor/autoload.php';
 			<tr>
 				<th colspan="8">
 					<?php 
-					// foreach ($month_names['es'] as $key => $value){
-					// 	if ($key == $month) {
-						print ($months($month) . '  ' . $year);
-					// 	}
-					// }
+					foreach ($month_names['es'] as $key => $value){
+						if ($key == $month) {
+						print ($value . '  ' . $year);
+						}
+					}
 					?>
 				</th>
 			</tr>
@@ -41,6 +39,7 @@ require 'vendor/autoload.php';
 					foreach ($day_names['es'] as $key => $value) {
 					print '<th>' . $value . '</th>';
 					}
+					// var_dump($day_names);
 				?>
 			</tr>
 			<?php
@@ -136,24 +135,3 @@ require 'vendor/autoload.php';
 </body>
 
 </html>
-
-
-
-<?php
-$html = ob_get_clean();
-?>
-
-<?php
-require_once __DIR__ . '/vendor/autoload.php';
-
-$mpdf = new \Mpdf\Mpdf([
-	'mode' => 'utf-8',
-	'format' => 'A5-P',
-	'orientation' => 'P',
-	]);
-	
-	$mpdf->WriteHTML($html);
-	
-	$mpdf->Output();
-
-?>

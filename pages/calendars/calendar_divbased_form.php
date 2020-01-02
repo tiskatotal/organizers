@@ -1,4 +1,6 @@
 <?php
+include ('../../classes/inc/lang.php');
+include ('../../classes/inc/dateset.php');
 //define the months
 $months = array(1 => 'January', 2 => 'February',	3 => 'March',	4 => 'April',	5 => 'May',	6 => 'June',	7 => 'July',	8 => 'August',	9 => 'September',	10 => 'October', 11 => 'November',	12 => 'December');
 
@@ -16,13 +18,17 @@ $years = range(2018,2030);
 <head>
 	<meta charset="UTF-8">
 	<title>Calendar Generate</title>
-	<link rel="stylesheet" href="css/calendar_table.css" />
+	<!-- <link rel="stylesheet" href="/organizers/assets/css_calendar/calendar_divbased_form.css" /> -->
+	<link rel="stylesheet" href="/organizers/assets/css_form/timetracker_form.css" />
+
+
+	<!-- <link rel="stylesheet" href="css/calendar_divbased.css" /> -->
 
 </head>
 
 <body>
 	<h1>Select month and year</h1>
-	<form action="calendar_table.php" method="get">
+	<form action="calendar_divbased.php" method="get">
 		<label>
 			<span>Month</span>
 			<select name="month">

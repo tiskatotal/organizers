@@ -1,22 +1,17 @@
 <?php
-//define the months
-$months = array(1 => 'January', 2 => 'February',	3 => 'March',	4 => 'April',	5 => 'May',	6 => 'June',	7 => 'July',	8 => 'August',	9 => 'September',	10 => 'October', 11 => 'November',	12 => 'December');
-// $nombre_mes = array(1 => 'Enero', 2 => 'Febrero',	3 => 'Marzo',	4 => 'Abril',	5 => 'Mayo',	6 => 'Junio',	7 => 'Julio',	8 => 'Agosto',	9 => 'Septiembre',	10 => 'Octubre', 11 => 'Noviembre',	12 => 'Diciembre',);
-// $maand_namen = array(1 => 'Januari', 2 => 'Februari', 3 => 'Maart', 4 => 'April', 5 => 'Mei', 6 => 'Juni', 7 => 'Juli', 8 => 'Augustus', 9 => 'September', 10 => 'Oktober', 11 => 'November', 12 => 'December');
+include ('../../classes/inc/lang.php');
+include ('../../classes/inc/dateset.php');
 
-//define the days of the week
-$week_days = array(1 => 'monday', 2 => 'tuesday', 3 => 'wednesday', 4 => 'thursday', 5 => 'friday', 6 => 'saturday', 7 => 'sunday');
-// $semana_dias = array('lunes','martes','mièrcoles','jueves','viernes','sabado','domingo');
-// $week_dagen  = array('maandag','dinsdag','woensdag','donderdag','vrijdag','zaterdag','zondag');
+// include ( '../classes/class.organizer.php');
 
-//define the years you want to use
-$years = range(2018, 2030);
-// $años = range(2000,2030);
-// $jaren = range(2000,2030);
+// $page = new organizer_page();
 
-$size = array(1 => 'A4 => A5', 2 => 'A3 => A4');
-$language = array('en' =>'English', 'es' => 'Español', 'nl' => 'Nederlands');
+$calendar = array(1 => 'print pdf', 2 => 'web html');
+$timetracker = array(1 => 'print pdf', 2 => 'web html');
+$size = array(1 => 'A5', 2 => 'A4');
+$lang_text = array();
 $cover = array(1 => 'wood', 2 => 'metal', 3 => 'custom cut');
+
 
 ?>
 
@@ -25,20 +20,49 @@ $cover = array(1 => 'wood', 2 => 'metal', 3 => 'custom cut');
 
 <head>
 	<meta charset="UTF-8">
-	<title>TimeTracker Generate</title>
-	<link rel="stylesheet" href="/organizers/timetracker/css/timetracker_form.css" />
+	<title>Tiska Total Organizers</title>
+	<link rel="stylesheet" href="../../assets/css_form/timetracker_form.css" />
 </head>
 
 <body>
-	<h1>SELECT => language, year, month, size, cover for TimeTracker</h1>
+	<h1>SELECT => language. SELECT calendar, timetracker year, month</h1>
 	<form action="timetracker.php" method="get">
 		<label>
 			<span>Language</span>
 			<select name="language">
-				<?php
+				<?php // 
 				foreach ($language as $lang_iso => $lang_txt) {
 				?>
 				<option value="<?php print($lang_iso); ?>"><?php print($lang_txt); ?></option>
+				<?php
+				
+				}
+				?>
+			</select>
+		</label>
+
+		<label>
+			<span>Calendar</span>
+			<select name="calendar">
+				<?php
+				foreach ($calendar as $calendar_number => $calendar_names) {
+					$actual_calendar = date('m');
+				?>
+					<option value="<?php print($calendar_number); ?>" <?php print($calendar_number == $actual_calendar ? 'selected' : ''); ?>><?php print($calendar_names); ?></option>
+				<?php
+				}
+				?>
+			</select>
+		</label>
+
+		<label>
+			<span>Timetracker</span>
+			<select name="timetracker">
+				<?php
+				foreach ($timetracker as $timetracker_number => $timetracker_names) {
+					$actual_timetracker = date('m');
+				?>
+					<option value="<?php print($timetracker_number); ?>" <?php print($timetracker_number == $actual_timetracker ? 'selected' : ''); ?>><?php print($timetracker_names); ?></option>
 				<?php
 				}
 				?>
@@ -106,3 +130,8 @@ $cover = array(1 => 'wood', 2 => 'metal', 3 => 'custom cut');
 </body>
 
 </html>
+<?php
+var_dump($language);
+var_dump($lang_iso);
+var_dump($lang_text);
+?>
