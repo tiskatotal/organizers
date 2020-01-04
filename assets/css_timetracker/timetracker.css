@@ -2,31 +2,23 @@
 .calendar td,
 .calendar th {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 16px;
-  color: #ff009d;
+  color: black;
+  font-size: 50px;
 }
 .calendar table {
-  margin: 40;
-  width: 75%;
+  margin: 30;
+  width: 85%;
   box-sizing: border-box;
-  border: 1pt solid black;
   border-collapse: collapse;
   border-spacing: 0;
 }
-.calendar table tr {
-  background: #c3e4bb;
-}
-.calendar table tr:hover {
-  background: brown;
-}
 .calendar table th {
-  background: rgba(115, 240, 13, 0.699);
-  height: 80px;
+  height: 180px;
+  font-size: 40px;
 }
 .calendar table th,
 .calendar table td {
   padding: 1mm 3mm;
-  border: 1pt solid black;
   border-collapse: collapse;
   white-space: nowrap;
 }
@@ -37,14 +29,24 @@
 .calendar table th.header,
 .calendar table td.header {
   width: 60%;
-  border: 1px;
-  background: rgba(231, 225, 219, 0.5);
+  font-size: 180px;
 }
-.calendar table td:hover {
-  background: #e7dede;
+.calendar table th.first_column,
+.calendar table td.first_column {
+  font-size: 30px;
+}
+.calendar table th.day_numbers,
+.calendar table td.day_numbers {
+  font-weight: 700;
+}
+.calendar table td {
+  height: 650px;
+  text-align: center;
+  vertical-align: top;
 }
 .calendar table.holidays td {
   padding: 0.8cm 0;
+  font-size: 60px;
 }
 .even_pages_right td,
 .odd_pages_left td {

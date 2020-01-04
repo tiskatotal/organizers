@@ -17,7 +17,7 @@ require '../../vendor/autoload.php';
 			<table>
 		<thead>
 			<tr>
-				<th colspan="8">
+				<th class='header' colspan="8">
 					<?php 
 					foreach ($month_names['es'] as $key => $value){
 						if ($key == $month) {
@@ -30,10 +30,10 @@ require '../../vendor/autoload.php';
 		</thead>
 		<tbody>
 			<tr>
-				<th> Week</th>
+				<th class='first_column'> Week</th>
 				<?php
 					foreach ($day_names['en'] as $key => $value) {
-						print '<th>' . $value . '</th>';
+						print '<th >' . $value . '</th>';
 					}
 				?>
 			</tr>
@@ -42,7 +42,7 @@ require '../../vendor/autoload.php';
 				$current_day = 1;
 				while ($current_day <= $last_day_month) {
 					print '<tr>';
-					print '<th>' . $current_week . '</th>';
+					print '<th class=first_column>' . $current_week . '</th>';
 					$painted_cells = 0;
 					// Nos faltan los 7 días L a D
 					if ($current_day == 1) {
@@ -54,9 +54,9 @@ require '../../vendor/autoload.php';
 					// paint a cell for every day of the month
 					for ($painted_cells; $painted_cells < 7; $painted_cells++) {
 						if ($current_day <= $last_day_month) {
-							print '<td>' . $current_day . '</td>';
+							print '<td class=day_numbers>' . $current_day . '</td>';
 						} else {
-							print '<td></td>';
+							print '<td class=day_numbers></td>';
 						}
 						$current_day++;
 					}
@@ -68,7 +68,7 @@ require '../../vendor/autoload.php';
 		<tfoot>
 			<tr>
 				<td colspan="8">
-					<p>Special Days
+					<p class="holidays">Special Days
 						<?php 
 							foreach ($month_names['es'] as $key => $value){
 								if ($key == $month) {
@@ -91,18 +91,34 @@ require '../../vendor/autoload.php';
 				foreach ($month_names['nl'] as $key => $value){
 					$value_month = $value;
 					if ($key == $month) {
-						
-						// $new_page = $day_of_week;
-						// if ($day_of_week = $new_page) {
-						// foreach ($day_names ['nl'] as $key => $value) {
-							$key = $new_page;
-								// for ($key = ''; $key < 7; $key++) {
-							// print ($value);
+
+						// foreach ($day_names as $day_of_week) {
+						foreach ($day_names ['nl'] as $key => $value) {
+							if ($days_in_month = $key){
+							// if ($key == $week_day) {
+								// $week_day++;
+								// foreach ($week_day as $key => $value) {
+								// 	// print ($week_day. '</br>' );
+								// 	// $key = $value;
+								// 	// print ($value. '</br>' );
+									
+								// 	// print ($key);
+									print ($value);
+									
+								// }
+
+							}
+							
+
+							// var_dump($first_day_month);
+							// var_dump($days_in_month);
 							// var_dump($key);
 							// var_dump($new_page);
 							// var_dump($day_of_week);
-								
-
+							// var_dump($month);
+							// var_dump($value_month);
+							// var_dump($day_names);
+						
 						if ($new_page % 2 === 0) {
 							print "<tr class='even_pages_right'>
 							<td>
@@ -119,21 +135,17 @@ require '../../vendor/autoload.php';
 					<div class='month'>" . ($value_month) . "</div>
 					</td>
 					</tr>";
-					// }
-				// }
+					}
+				}
 			}
 		}
-		// var_dump($day_of_week);
-		// var_dump($day_names);
-			// print year or something else <span class='year'>" . $year) . "</span>
+		// print year or something else <span class='year'>" . $year) . "</span>
 			?>
 		</table>
 		<?php
 			// $date->add(new DateInterval('P1D')); // to get names of weekdays
-			
-				}
 			}
-		// }
+
 		?>
 </body>
 

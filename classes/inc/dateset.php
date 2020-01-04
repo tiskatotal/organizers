@@ -22,17 +22,15 @@ if (isset($_REQUEST['year'])) {
 	$last_day_month = $date->format('t'); //number of days in given month 28 through 31
 	$first_day_month = $date->format('N'); //Starts the month on the right weekday 1 for monday 7 sunday
 	$start_month_day = $date->format('D'); // textual representation 3 letters
-	// $current_cells = array();
-	
-	
+	// $week_day = $date->format('N');
+	// $day_of_week = $day_names;
 	// $date_day = new DateTime;
 	// $month = $date->format('N'); //Numeric representation of a month, with leading zeros 01 through 12  
 	
+	
+	// $year = '';
+	// $month = '';
 	// $date_day = new DateTime(sprintf('%s, %s, -oi', $year, $month));
-// $date->setDate($year, $month, 1);
-
-// $year = '';
-// $month = '';
 // $last_day_month = $date_day->format('t');
 // 	for ($i = 1; $i <= $last_day_month; $i++) {
 // 		print sprintf('%s <br/>', $i);

@@ -30,7 +30,7 @@ $holidaysInDecember = $holidays->between(
 		<table>
 			<thead>
 				<tr>
-					<th colspan="8">
+					<th class='header' colspan="8">
 						<?php
 							foreach ($month_names['es'] as $key => $value){
 								if ($key == $month) {
@@ -55,7 +55,7 @@ $holidaysInDecember = $holidays->between(
 				$current_day = 1;
 				while ($current_day <= $last_day_month) {
 					print '<tr>';
-					print '<th>' . $current_week . '</th>';
+					print '<th class=first_column>' . $current_week . '</th>';
 
 					$painted_cells = 0;
 					// Nos faltan los 7 días L a D
@@ -84,7 +84,7 @@ $holidaysInDecember = $holidays->between(
 			<tfoot>
 				<tr>
 					<td colspan="8">
-						<p>Special Days 
+						<p class='holidays'>Special Days 
 							<?php
 							foreach ($month_names['es'] as $key => $value){
 								if ($key == $month) {
@@ -106,6 +106,11 @@ $holidaysInDecember = $holidays->between(
 		foreach ($month_names['nl'] as $key => $value){
 			if ($key == $month) {
 		for ($new_page = 1; $new_page <= 31; $new_page++) {
+			$day_of_week = $date->format('l');
+			
+			// $day_of_week = $day_names['es'];
+			// var_dump($day_names);
+
 			print('<pagebreak />');
 	?>
 		<table align="<?=($new_page % 2 === 0)?'right':'left'?>">
