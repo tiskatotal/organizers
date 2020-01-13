@@ -4,22 +4,32 @@
 		$language = $_REQUEST['language'];
 	}
 	
-	$language = array(
-		'en' => 'english',
-		'es' => 'español',
-		'nl' => 'nederlands',
+	$lang_short = array(
+		1 => 'en',
+		2 => 'es',
+		3 => 'nl',
 	);
 
-	$languages_iso = array(
-	'en' => 'en-US',
-	'es' => 'es-ES',
-	'nl' => 'nl-NL',
-);
+	$lang_long = array(
+		// 'english', 'español', 'nederlands'
+		'en-US' => 'english',
+		'es-ES' => 'español',
+		'nl-NL' => 'nederlands',
+	);
+
+	$lang_iso = array(
+	'1' => 'en-US',
+	'2' => 'es-ES',
+	'3' => 'nl-NL',
+	);
+
+	$lang_txt = array('en', 'es', 'nl');
+
 
 $week = array(
-	'en' => array( 1 => 'week'),
-	'es' => array( 1 => 'semana'),
-	'nl' => array( 1 => 'week'),
+	'en' => 'week',
+	'es' => 'semana',
+	'nl' => 'week',
 );
 
 $day_names = array(
@@ -36,13 +46,15 @@ $month_names = array(
 	
 );
 
-$year = array(
+$month_text = array('month', 'mes', 'maand');
+
+$year_txt = array(
 	'en' => 'year',
 	'es' => 'año',
 	'nl' => 'jaar'
 );
 
-$years = array(
+$years_txt = array(
 	'en' => 'years',
 	'es' => 'años',
 	'nl' => 'jaren'

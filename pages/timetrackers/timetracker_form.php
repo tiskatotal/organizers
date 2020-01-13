@@ -2,9 +2,9 @@
 include ('../../classes/inc/lang.php');
 include ('../../classes/inc/dateset.php');
 
-// include ( '../classes/class.organizer.php');
+include ( '../../classes/class.organizer.php');
 
-// $page = new organizer_page();
+$page = new organizer_page();
 
 $calendar = array(1 => 'print pdf', 2 => 'web html');
 $timetracker = array(1 => 'print pdf', 2 => 'web html');
@@ -31,9 +31,9 @@ $cover = array(1 => 'wood', 2 => 'metal', 3 => 'custom cut');
 			<span>Language</span>
 			<select name="language">
 				<?php // 
-				foreach ($language as $lang_iso => $lang_txt) {
+				foreach ($language as $lang_iso => $lang_long) {
 				?>
-				<option value="<?php print($lang_iso); ?>"><?php print($lang_txt); ?></option>
+				<option value="<?php print($lang_long); ?>"><?php print($lang_long); ?></option>
 				<?php
 				
 				}
@@ -131,7 +131,17 @@ $cover = array(1 => 'wood', 2 => 'metal', 3 => 'custom cut');
 
 </html>
 <?php
+var_dump($actual_year);
+var_dump($actual_month);
+
 var_dump($language);
 var_dump($lang_iso);
-var_dump($lang_text);
+var_dump($lang_short);
+var_dump($lang_long);
+var_dump($lang_txt);
+
+var_dump($day_names);
+var_dump($month_names);
+
+
 ?>

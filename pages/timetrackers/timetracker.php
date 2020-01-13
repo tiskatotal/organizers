@@ -82,70 +82,58 @@ require '../../vendor/autoload.php';
 		</tfoot>
 	</table>
 </div>
-<?php //add 32 pages and set left and right pages. TR
-			for ($new_page = 1; $new_page <= 31; $new_page++) {
-				print('<pagebreak />');
-				?>
+			<?php //add 32 pages and set left and right pages. TR
+				for ($new_page = 1; $new_page <= 31; $new_page++) {
+					print('<pagebreak />');
+			?>
 		<table align="<?=($new_page % 2 === 0)?'right':'left'?>">
 			<?php
 				foreach ($month_names['nl'] as $key => $value){
 					$value_month = $value;
 					if ($key == $month) {
+						foreach ($day_names ['es'] as $key => $value) {
 
-						// foreach ($day_names as $day_of_week) {
-						foreach ($day_names ['nl'] as $key => $value) {
 							if ($days_in_month = $key){
-							// if ($key == $week_day) {
-								// $week_day++;
-								// foreach ($week_day as $key => $value) {
-								// 	// print ($week_day. '</br>' );
-								// 	// $key = $value;
-								// 	// print ($value. '</br>' );
-									
-								// 	// print ($key);
-									print ($value);
-									
-								// }
-
+								print ($value);
 							}
-							
 
-							// var_dump($first_day_month);
-							// var_dump($days_in_month);
-							// var_dump($key);
-							// var_dump($new_page);
-							// var_dump($day_of_week);
-							// var_dump($month);
-							// var_dump($value_month);
-							// var_dump($day_names);
-						
-						if ($new_page % 2 === 0) {
-							print "<tr class='even_pages_right'>
-							<td>
-							<div class='weekday'>" . ($value) . "</div>
-							<div class='month'>" . ($value_month) . "</div>
-							</td>
-							<td class='day'>" . ($new_page) . "</td>
-				</tr>";
-				} else {
-					print "<tr class='odd_pages_left'>
-					<td class='day'>". ($new_page) . "</td>
-					<td>
-					<div class='weekday'>" . ($value) . "</div>
-					<div class='month'>" . ($value_month) . "</div>
-					</td>
-					</tr>";
+							if ($new_page % 2 === 0) {
+								print "<tr class='even_pages_right'>
+										<td>
+										<div class='weekday'>" . ($value) . "</div>
+										<div class='month'>" . ($value_month) . "</div>
+										</td>
+										<td class='day'>" . ($new_page) . "</td>
+									</tr>";
+								} else {
+								print "<tr class='odd_pages_left'>
+								<td class='day'>". ($new_page) . "</td>
+								<td>
+								<div class='weekday'>" . ($value) . "</div>
+								<div class='month'>" . ($value_month) . "</div>
+								</td>
+								</tr>";
+									}
+								}
+							}
 					}
 				}
-			}
-		}
 		// print year or something else <span class='year'>" . $year) . "</span>
 			?>
 		</table>
 		<?php
 			// $date->add(new DateInterval('P1D')); // to get names of weekdays
-			}
-
+		
+// var_dump($first_day_month);
+// var_dump($days_in_month);
+// var_dump($key);
+// var_dump($new_page);
+// var_dump($day_of_week);
+var_dump($month);
+// var_dump($value_month);
+var_dump($day_names);
+var_dump($month_names);
+var_dump($actual_month);
 		?>
 </body>
 
@@ -185,6 +173,3 @@ require '../../vendor/autoload.php';
 		// $date->add(new DateInterval('P1D')); // to get names of weekdays
 		// }
 	?>
-<!-- </body>
-
-</html> -->

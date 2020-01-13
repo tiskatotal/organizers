@@ -12,6 +12,9 @@
   border-collapse: collapse;
   border-spacing: 0;
 }
+.calendar table tr {
+  font-size: 50px;
+}
 .calendar table th {
   height: 180px;
   font-size: 40px;
